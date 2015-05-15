@@ -4,3 +4,5 @@ Sistema de Lançamento de horas desenvolvido com as tecnologias:
 - fragments
 - chamar api fake
 - material UI.
+
+Esboço das telas:
