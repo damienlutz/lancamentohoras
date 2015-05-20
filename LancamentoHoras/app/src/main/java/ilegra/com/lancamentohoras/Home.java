@@ -62,6 +62,7 @@ public class Home extends ActionBarActivity
                 //mTitle = getString(R.string.title_section1); 
                 
                 intent = new Intent(this,LancarHora.class);
+                startActivity(intent);
                 
                 break;
             case 2:
