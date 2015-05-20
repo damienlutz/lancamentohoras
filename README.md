@@ -6,3 +6,4 @@ Sistema de Lançamento de horas desenvolvido com as tecnologias:
 - material UI.
 
 Esboço das telas:
+https://github.com/damienlutz/lancamentohoras/blob/master/design/esboco%20telas.png
