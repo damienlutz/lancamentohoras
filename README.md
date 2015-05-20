@@ -1,4 +1,4 @@
-# lancamentohoras
+# Lancamento de Horas
 Sistema de Lançamento de horas desenvolvido com as tecnologias:
 - slide da tela
 - fragments
