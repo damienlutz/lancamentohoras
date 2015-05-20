@@ -1,9 +1,11 @@
 # Lancamento de Horas
 Sistema de Lançamento de horas desenvolvido com as tecnologias:
-- slide da tela
-- fragments
-- chamar api fake
-- material UI.
+- Menu com slide da tela (Navigation drawer)
+- Fragments
+- Material Theme
+- Chamadas para api simulando interação com camada de persistencia
+
+Design de acordo com Material Design guidelines.
 
 Esboço das telas:
 
