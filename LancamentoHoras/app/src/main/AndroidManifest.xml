@@ -32,6 +32,10 @@
             android:name=".Home"
             android:label="@string/title_activity_home" >
         </activity>
+        <activity
+            android:name=".LancarHora"
+            android:label="@string/title_activity_lancar_hora" >
+        </activity>
     </application>
 
 </manifest>

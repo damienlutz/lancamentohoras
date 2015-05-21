@@ -1,6 +1,7 @@
 package ilegra.com.lancamentohoras;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -60,8 +61,8 @@ public class Home extends ActionBarActivity
         switch (number) {
             case 1:
                 //mTitle = getString(R.string.title_section1); 
-                
-                intent = new Intent(this,LancarHora.class);
+
+                Intent intent = new Intent(this,LancarHora.class);
                 startActivity(intent);
                 
                 break;
