@@ -1,23 +1,23 @@
 package com.example.damien.lancamentodehoras;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class LamcamentoDeHoras extends ActionBarActivity {
+public class LancamentoDeHoras extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lamcamento_de_horas);
+        setContentView(R.layout.activity_lancamento_de_horas);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_lamcamento_de_horas, menu);
+        getMenuInflater().inflate(R.menu.menu_lancamento_de_horas, menu);
         return true;
     }
 
