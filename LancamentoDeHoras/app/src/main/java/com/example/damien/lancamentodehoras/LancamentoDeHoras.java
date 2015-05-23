@@ -1,12 +1,25 @@
 package com.example.damien.lancamentodehoras;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class LancamentoDeHoras extends Activity {
+
+    private static final String TAG = "LancamentoDeHoras";
+
+    public void login(View view){
+        Log.v(TAG, "index=");
+        Log.v(TAG, "index=");
+        Intent intent = new Intent(this,Home.class);
+        startActivity(intent);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
