@@ -47,6 +47,10 @@ public class LancarHora extends Fragment {
         return fragment;
     }
 
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
     public LancarHora() {
         // Required empty public constructor
     }
