@@ -1,6 +1,15 @@
 package com.example.damien.lancamentodehoras;
 
-public static class TimePickerFragment extends DialogFragment
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
+import android.os.Bundle;
+import android.text.format.DateFormat;
+import android.widget.TimePicker;
+
+import java.util.Calendar;
+
+public class TimePickerFragment extends DialogFragment
                             implements TimePickerDialog.OnTimeSetListener {
 
     @Override

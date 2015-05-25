@@ -1,6 +1,7 @@
 package com.example.damien.lancamentodehoras;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -47,10 +48,6 @@ public class LancarHora extends Fragment {
         return fragment;
     }
 
-    public void showTimePickerDialog(View v) {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "timePicker");
-    }
     public LancarHora() {
         // Required empty public constructor
     }

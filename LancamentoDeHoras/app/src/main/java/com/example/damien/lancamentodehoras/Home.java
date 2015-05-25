@@ -3,6 +3,7 @@ package com.example.damien.lancamentodehoras;
 import android.app.Activity;
 
 import android.app.ActionBar;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
@@ -109,6 +110,12 @@ public class Home extends Activity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getFragmentManager(), "timePicker");
     }
 
     /**
