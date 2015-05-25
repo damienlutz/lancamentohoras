@@ -8,6 +8,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -47,8 +48,12 @@ public class Home extends Activity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
+    private static final String TAG = "LancamentoDeHoras";
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+
+        Log.v(TAG, "pos: " + position);
+
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
@@ -115,6 +120,7 @@ public class Home extends Activity
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
+        private static final int INDEX_LANCAR = 2;
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -131,11 +137,23 @@ public class Home extends Activity
         public PlaceholderFragment() {
         }
 
+        private static final String TAG = "LancamentoDeHoras";
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-            return rootView;
+
+                Log.v(TAG, "pos arg: " + getArguments().getInt(ARG_SECTION_NUMBER));
+            int position = getArguments().getInt(ARG_SECTION_NUMBER);
+            switch (position){
+                case INDEX_LANCAR:
+                    View lancarView = inflater.inflate(R.layout.fragment_lancar_hora, container, false);
+                    return lancarView;
+                default:
+                    View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+                    return rootView;
+            }
+
         }
 
         @Override

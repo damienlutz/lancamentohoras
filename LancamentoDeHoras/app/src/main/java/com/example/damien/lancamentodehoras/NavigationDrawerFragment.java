@@ -190,12 +190,9 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
-    private static final String TAG = "LancamentoDeHoras";
-
     private void selectItem(int position) {
         mCurrentSelectedPosition = position;
-        Log.v(TAG, "pos: " + position);
-        
+
         if (mDrawerListView != null) {
             mDrawerListView.setItemChecked(position, true);
         }
