@@ -48,13 +48,6 @@ public class LancarHora extends Fragment {
         return fragment;
     }
     
-    Button button = (Button) findViewById(R.id.button_pick_time);
-    button.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-            // Do something in response to button click
-        }
-    });
-
     public LancarHora() {
         // Required empty public constructor
     }
@@ -66,13 +59,24 @@ public class LancarHora extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lancar_hora, container, false);
+        View layout = inflater.inflate(R.layout.fragment_lancar_hora, container, false);
+        
+        Button button = (Button) findViewById(R.id.button_pick_time);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                DialogFragment newFragment = new TimePickerFragment();
+                newFragment.show(getFragmentManager(), "timePicker");
+            }
+        });
+        
+        return layout;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
