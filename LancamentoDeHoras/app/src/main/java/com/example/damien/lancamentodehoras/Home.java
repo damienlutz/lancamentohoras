@@ -112,12 +112,6 @@ public class Home extends Activity
         return super.onOptionsItemSelected(item);
     }
 
-
-    public void showTimePickerDialog(View v) {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getFragmentManager(), "timePicker");
-    }
-
     /**
      * A placeholder fragment containing a simple view.
      */
