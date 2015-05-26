@@ -47,6 +47,13 @@ public class LancarHora extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    
+    Button button = (Button) findViewById(R.id.button_pick_time);
+    button.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            // Do something in response to button click
+        }
+    });
 
     public LancarHora() {
         // Required empty public constructor
