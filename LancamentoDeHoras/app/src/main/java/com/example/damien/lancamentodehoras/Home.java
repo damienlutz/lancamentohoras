@@ -3,7 +3,6 @@ package com.example.damien.lancamentodehoras;
 import android.app.Activity;
 
 import android.app.ActionBar;
-import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
