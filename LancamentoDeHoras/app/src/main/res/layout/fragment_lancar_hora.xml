@@ -8,6 +8,7 @@
         android:text="@string/hello_blank_fragment" />
         
         <Button 
+    android:id="@+id/button_pick_time"
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"
     android:text="@string/pick_time"  />
