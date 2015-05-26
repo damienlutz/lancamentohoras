@@ -60,14 +60,6 @@ public class LancarHora extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View layout = inflater.inflate(R.layout.fragment_lancar_hora, container, false);
-        
         Button button = (Button) findViewById(R.id.button_pick_time);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -75,8 +67,13 @@ public class LancarHora extends Fragment {
                 newFragment.show(getFragmentManager(), "timePicker");
             }
         });
-        
-        return layout;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_lancar_hora, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
