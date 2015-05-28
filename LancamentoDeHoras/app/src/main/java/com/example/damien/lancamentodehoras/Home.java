@@ -145,8 +145,6 @@ public class Home extends Activity
         public PlaceholderFragment() {
         }
 
-        private static final String TAG = "LancamentoDeHoras";
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
