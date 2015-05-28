@@ -5,9 +5,11 @@ import android.app.DialogFragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -45,12 +47,14 @@ public class LancarHora extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
+        Log.d(TAG, "log askdjfajs");
         return fragment;
     }
     
     public LancarHora() {
         // Required empty public constructor
     }
+    private static final String TAG = "LancamentoDeHoras";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,13 +64,7 @@ public class LancarHora extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         
-        Button button = (Button) findViewById(R.id.button_pick_time);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                DialogFragment newFragment = new TimePickerFragment();
-                newFragment.show(getFragmentManager(), "timePicker");
-            }
-        });
+        Log.d(TAG, "log askdjfajs");
     }
 
     @Override
