@@ -75,6 +75,16 @@ public class LancarHora extends Fragment {
     }
 
     @Override
+    public void onActivityCreated (Bundle savedInstanceState){
+        super.onActivityCreated ( savedInstanceState);
+        Button button = (Button) getView().findViewById(R.id.button_pick_time);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+            }
+    });
+    }
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
