@@ -54,7 +54,7 @@ public class LancarHora extends Fragment {
     public LancarHora() {
         // Required empty public constructor
     }
-    private static final String TAG = "LancamentoDeHoras";
+    private static final String TAG = "LancamentoDeHoras - LancarHora";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,16 +71,18 @@ public class LancarHora extends Fragment {
             }
     });
 
-        Log.d(TAG, "log askdjfajs");
+        Log.d(TAG, "oncreate ");
     }
 
     @Override
     public void onActivityCreated (Bundle savedInstanceState){
         super.onActivityCreated ( savedInstanceState);
         Button button = (Button) getView().findViewById(R.id.button_pick_time);
+        Log.d(TAG, "onActivityCreated ");
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
+                Log.d(TAG, "click");
             }
     });
     }
