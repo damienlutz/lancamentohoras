@@ -20,9 +20,10 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
-public class Home extends Activity
+public class Home extends FragmentActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
+        private static final int INDEX_LANCAR = 2;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -54,6 +55,14 @@ public class Home extends Activity
 
         Log.v(TAG, "pos: " + position);
 
+        if(position==INDEX_LANCAR){
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new LancarHora())
+                        .commit();
+                return;
+        }
+                    
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
@@ -120,7 +129,6 @@ public class Home extends Activity
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
-        private static final int INDEX_LANCAR = 2;
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -143,16 +151,7 @@ public class Home extends Activity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-                Log.v(TAG, "pos arg: " + getArguments().getInt(ARG_SECTION_NUMBER));
-            int position = getArguments().getInt(ARG_SECTION_NUMBER);
-            switch (position){
-                case INDEX_LANCAR:
-                    View lancarView = inflater.inflate(R.layout.fragment_lancar_hora, container, false);
-                    return lancarView;
-                default:
-                    View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-                    return rootView;
-            }
+                 return  inflater.inflate(R.layout.fragment_home, container, false);
 
         }
 
