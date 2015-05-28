@@ -20,7 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
-public class Home extends FragmentActivity
+public class Home extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
         private static final int INDEX_LANCAR = 2;
