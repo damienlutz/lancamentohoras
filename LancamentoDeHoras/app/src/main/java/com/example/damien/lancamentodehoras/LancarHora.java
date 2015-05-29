@@ -47,14 +47,15 @@ public class LancarHora extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
-        Log.d(TAG, "log askdjfajs");
+        Log.d(TAG, "log new inst");
         return fragment;
     }
     
     public LancarHora() {
         // Required empty public constructor
+        Log.d(TAG, "construct");
     }
-    private static final String TAG = "LancamentoDeHoras - LancarHora";
+    private static final String TAG = "LancamentoDeHoras - Lan";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,13 +64,6 @@ public class LancarHora extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        
-        Button button = (Button) getview().findViewById(R.id.button_pick_time);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            // Do something in response to button click
-            }
-    });
 
         Log.d(TAG, "oncreate ");
     }

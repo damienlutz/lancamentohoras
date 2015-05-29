@@ -8,6 +8,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -20,10 +21,10 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
-public class Home extends Activity
+public class Home extends FragmentActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
-        private static final int INDEX_LANCAR = 2;
+        private static final int INDEX_LANCAR = 1;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -56,9 +57,10 @@ public class Home extends Activity
         Log.v(TAG, "pos: " + position);
 
         if(position==INDEX_LANCAR){
+            Fragment lancar = new LancarHora();
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new LancarHora())
+                        .replace(R.id.container, lancar, "lancarFragment")
                         .commit();
                 return;
         }
