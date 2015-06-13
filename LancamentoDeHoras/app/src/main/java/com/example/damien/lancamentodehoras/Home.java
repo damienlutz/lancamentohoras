@@ -56,6 +56,7 @@ public class Home extends FragmentActivity
 
         Log.v(TAG, "pos: " + position);
 
+        //TODO: switch
         if(position==INDEX_LANCAR){
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()

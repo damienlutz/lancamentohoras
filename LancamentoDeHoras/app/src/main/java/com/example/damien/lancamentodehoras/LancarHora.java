@@ -1,10 +1,10 @@
 package com.example.damien.lancamentodehoras;
 
 import android.app.Activity;
-import android.app.DialogFragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,8 +50,8 @@ public class LancarHora extends android.support.v4.app.Fragment {
         Log.d(TAG, "onActivityCreated ");
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Do something in response to button click
-                Log.d(TAG, "click");
+                DialogFragment newFragment = new TimePickerFragment();
+                newFragment.show(getFragmentManager(), "timePicker");
             }
     });
     }
