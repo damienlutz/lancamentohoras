@@ -1,7 +1,5 @@
 package com.example.damien.lancamentodehoras;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.app.DialogFragment;
@@ -15,26 +13,26 @@ import android.widget.Button;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link LancarHora.} interface
+ * {@link LancarHoraFragment.} interface
  * to handle interaction events.
- * Use the {@link LancarHora#newInstance} factory method to
+ * Use the {@link LancarHoraFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LancarHora extends android.support.v4.app.Fragment {
+public class LancarHoraFragment extends android.support.v4.app.Fragment {
 
 
 
-    public static LancarHora newInstance() {
-        LancarHora fragment = new LancarHora();
+    public static LancarHoraFragment newInstance() {
+        LancarHoraFragment fragment = new LancarHoraFragment();
         Log.d(TAG, "log new inst");
         return fragment;
     }
     
-    public LancarHora() {
+    public LancarHoraFragment() {
         // Required empty public constructor
         Log.d(TAG, "construct");
     }
-    private static final String TAG = "LancamentoDeHoras - Lan";
+    private static final String TAG = "LancamentoDeHorasActivity - Lan";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

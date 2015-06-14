@@ -3,25 +3,20 @@ package com.example.damien.lancamentodehoras;
 import android.app.Activity;
 
 import android.app.ActionBar;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 
-public class Home extends FragmentActivity
+public class HomeActivity extends FragmentActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
         private static final int INDEX_LANCAR = 1;
@@ -50,7 +45,7 @@ public class Home extends FragmentActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
-    private static final String TAG = "LancamentoDeHoras";
+    private static final String TAG = "LancamentoDeHorasActivity";
     @Override
     public void onNavigationDrawerItemSelected(int position) {
 
@@ -60,7 +55,7 @@ public class Home extends FragmentActivity
         if(position==INDEX_LANCAR){
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new LancarHora())
+                        .replace(R.id.container, new LancarHoraFragment())
                         .commit();
                 return;
         }
@@ -110,7 +105,7 @@ public class Home extends FragmentActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the HomeActivity/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
@@ -158,7 +153,7 @@ public class Home extends FragmentActivity
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((Home) activity).onSectionAttached(
+            ((HomeActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }

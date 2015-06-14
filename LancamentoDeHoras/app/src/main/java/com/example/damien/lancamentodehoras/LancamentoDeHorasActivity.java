@@ -9,14 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class LancamentoDeHoras extends Activity {
+public class LancamentoDeHorasActivity extends Activity {
 
-    private static final String TAG = "LancamentoDeHoras";
+    private static final String TAG = "LancamentoDeHorasActivity";
 
     public void login(View view){
         Log.v(TAG, "index=");
         Log.v(TAG, "index=");
-        Intent intent = new Intent(this,Home.class);
+        Intent intent = new Intent(this,HomeActivity.class);
         startActivity(intent);
 
     }
@@ -37,7 +37,7 @@ public class LancamentoDeHoras extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the HomeActivity/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
