@@ -1,4 +1,4 @@
-package com.example.damien.lancamentodehoras;
+package com.example.damien.lancamentodehoras.view.home;
 
 import android.os.Bundle;
 import android.app.Fragment;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.damien.lancamentodehoras.R;
 
 
 /**

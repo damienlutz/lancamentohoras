@@ -1,4 +1,4 @@
-package com.example.damien.lancamentodehoras;
+package com.example.damien.lancamentodehoras.view.home;
 
 import android.app.Activity;
 
@@ -14,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+
+import com.example.damien.lancamentodehoras.view.NavigationDrawerFragment;
+import com.example.damien.lancamentodehoras.R;
 
 
 public class HomeActivity extends FragmentActivity
