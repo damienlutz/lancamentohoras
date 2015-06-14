@@ -57,6 +57,7 @@ public class HomeActivity extends FragmentActivity
         switch (position) {
             case INDEX_LANCAR:
                 selectedFragment = new LancarHoraFragment();
+                mTitle = getString(R.string.title_section2);
                 break;
             default:
                 selectedFragment = PlaceholderFragment.newInstance(position + 1);

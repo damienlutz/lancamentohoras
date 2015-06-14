@@ -53,8 +53,9 @@ public class LancarHoraFragment extends android.support.v4.app.Fragment {
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "timePicker");
             }
-    });
+        });
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
