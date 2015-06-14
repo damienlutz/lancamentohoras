@@ -1,4 +1,4 @@
-package com.example.damien.lancamentodehoras.view;
+package com.example.damien.lancamentodehoras;
 
 
 import android.app.Activity;

@@ -1,4 +1,4 @@
-package com.example.damien.lancamentodehoras.view.home;
+package com.example.damien.lancamentodehoras.home.lancarhora;
 
 import android.os.Bundle;
 import android.app.Fragment;

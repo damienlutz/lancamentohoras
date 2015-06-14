@@ -1,4 +1,4 @@
-package com.example.damien.lancamentodehoras.view;
+package com.example.damien.lancamentodehoras;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,8 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.damien.lancamentodehoras.R;
-import com.example.damien.lancamentodehoras.view.home.HomeActivity;
+import com.example.damien.lancamentodehoras.home.HomeActivity;
 
 
 public class LancamentoDeHorasActivity extends Activity {
