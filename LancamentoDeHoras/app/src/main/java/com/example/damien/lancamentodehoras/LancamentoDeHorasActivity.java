@@ -16,8 +16,6 @@ public class LancamentoDeHorasActivity extends Activity {
     private static final String TAG = "LancamentoDeHorasActivity";
 
     public void login(View view){
-        Log.v(TAG, "index=");
-        Log.v(TAG, "index=");
         Intent intent = new Intent(this,HomeActivity.class);
         startActivity(intent);
 

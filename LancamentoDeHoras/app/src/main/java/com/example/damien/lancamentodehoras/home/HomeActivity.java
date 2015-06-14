@@ -53,22 +53,21 @@ public class HomeActivity extends FragmentActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
 
-        Log.v(TAG, "pos: " + position);
+        Fragment selectedFragment;
+        switch (position) {
+            case INDEX_LANCAR:
+                selectedFragment = new LancarHoraFragment();
+                break;
+            default:
+                selectedFragment = PlaceholderFragment.newInstance(position + 1);
 
-        //TODO: switch
-        if(position==INDEX_LANCAR){
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, new LancarHoraFragment())
-                        .commit();
-                return;
         }
-                    
-        // update the main content by replacing fragments
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, selectedFragment)
                 .commit();
+        return;
     }
 
     public void onSectionAttached(int number) {
