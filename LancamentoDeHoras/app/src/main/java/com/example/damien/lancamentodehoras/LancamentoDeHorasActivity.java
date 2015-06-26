@@ -1,6 +1,6 @@
 package com.example.damien.lancamentodehoras;
 
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +11,7 @@ import android.view.View;
 import com.example.damien.lancamentodehoras.home.HomeActivity;
 
 
-public class LancamentoDeHorasActivity extends Activity {
+public class LancamentoDeHorasActivity extends FragmentActivity {
 
     private static final String TAG = "LancamentoDeHorasActivity";
 
