@@ -15,7 +15,7 @@ public class LancamentoDeHorasActivity extends FragmentActivity {
 
     private static final String TAG = "LancamentoDeHorasActivity";
 
-    public void login(View view){
+    public void login(){
         Intent intent = new Intent(this,HomeActivity.class);
         startActivity(intent);
 
@@ -25,6 +25,14 @@ public class LancamentoDeHorasActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lancamento_de_horas);
+         
+        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+
+        btnLogin.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                login();
+            }
+        });
     }
 
     @Override
