@@ -29,6 +29,7 @@ public class LancamentoDeHorasActivity extends FragmentActivity {
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(new View.OnClickListener(){
+            @Override
             public void onClick(View view) {
                 login();
             }
