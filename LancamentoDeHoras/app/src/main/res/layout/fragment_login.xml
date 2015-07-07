@@ -8,6 +8,8 @@
         android:id="@+id/btnLogin"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:backgroundTint="@color/primary_dark"
         android:text="@string/login"
         android:onClick="login" />
 
