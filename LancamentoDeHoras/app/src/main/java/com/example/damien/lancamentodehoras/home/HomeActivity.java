@@ -3,11 +3,11 @@ package com.example.damien.lancamentodehoras.home;
 import android.app.Activity;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,13 +17,15 @@ import android.support.v4.widget.DrawerLayout;
 
 import com.example.damien.lancamentodehoras.NavigationDrawerFragment;
 import com.example.damien.lancamentodehoras.R;
-import com.example.damien.lancamentodehoras.home.lancarhora.LancarHoraFragment;
+import com.example.damien.lancamentodehoras.lancarhora.LancarHoraFragment;
+import com.example.damien.lancamentodehoras.lancarhora.LancarHoraListViewLoader;
 
 
 public class HomeActivity extends FragmentActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
-        private static final int INDEX_LANCAR = 1;
+    private static final int INDEX_LANCAR = 1;
+    private static final int INDEX_ETC = 2;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -59,6 +61,9 @@ public class HomeActivity extends FragmentActivity
                 selectedFragment = new LancarHoraFragment();
                 mTitle = getString(R.string.title_section2);
                 break;
+            case INDEX_ETC:
+                Intent intent = new Intent(this,LancarHoraListViewLoader.class);
+                startActivity(intent);
             default:
                 selectedFragment = PlaceholderFragment.newInstance(position + 1);
 

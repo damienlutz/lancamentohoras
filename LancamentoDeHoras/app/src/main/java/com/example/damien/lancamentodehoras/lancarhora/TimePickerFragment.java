@@ -1,4 +1,4 @@
-package com.example.damien.lancamentodehoras.home.lancarhora;
+package com.example.damien.lancamentodehoras.lancarhora;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
