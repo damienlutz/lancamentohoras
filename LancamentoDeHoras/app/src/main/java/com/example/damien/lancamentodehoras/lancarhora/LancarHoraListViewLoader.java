@@ -1,3 +1,5 @@
+package com.example.damien.lancamentodehoras.lancarhora;
+
 public class LancarHoraListViewLoader extends ListActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
