@@ -1,4 +1,4 @@
-package de.vogella.android.fragments;
+package com.example.damien.lancamentodehoras.lancarhora;
 
 import android.content.Intent;
 import android.os.Bundle;
