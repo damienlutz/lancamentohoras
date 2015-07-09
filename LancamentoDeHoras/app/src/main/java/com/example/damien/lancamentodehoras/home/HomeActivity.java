@@ -62,8 +62,8 @@ public class HomeActivity extends FragmentActivity
                 mTitle = getString(R.string.title_section2);
                 break;
             case INDEX_ETC:
-                Intent intent = new Intent(this,LancarHoraListViewLoader.class);
-                startActivity(intent);
+                selectedFragment = new LancarHoraListViewFragment ();
+                mTitle = getString(R.string.title_section2);
             default:
                 selectedFragment = PlaceholderFragment.newInstance(position + 1);
 
