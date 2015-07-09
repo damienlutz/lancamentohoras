@@ -63,7 +63,7 @@ public class HomeActivity extends FragmentActivity
                 break;
             case INDEX_ETC:
                 selectedFragment = new LancarHoraListViewFragment ();
-                mTitle = getString(R.string.title_section2);
+                mTitle = getString(R.string.title_section3);
             default:
                 selectedFragment = PlaceholderFragment.newInstance(position + 1);
 
