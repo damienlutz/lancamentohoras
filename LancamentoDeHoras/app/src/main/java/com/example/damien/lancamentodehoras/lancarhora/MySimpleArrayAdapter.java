@@ -22,7 +22,7 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
   public View getView(int position, View convertView, ViewGroup parent) {
     LayoutInflater inflater = (LayoutInflater) context
         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    View rowView = inflater.inflate(R.layout.rowlayout, parent, false);
+    View rowView = inflater.inflate(R.layout.apontarHoraListaItem, parent, false);
     TextView textView = (TextView) rowView.findViewById(R.id.dateLine);
     
     textView.setText(values[position]);
