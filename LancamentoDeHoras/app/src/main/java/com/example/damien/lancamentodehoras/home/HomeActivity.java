@@ -18,6 +18,7 @@ import android.support.v4.widget.DrawerLayout;
 import com.example.damien.lancamentodehoras.NavigationDrawerFragment;
 import com.example.damien.lancamentodehoras.R;
 import com.example.damien.lancamentodehoras.lancarhora.LancarHoraFragment;
+import com.example.damien.lancamentodehoras.lancarhora.LancarHoraListViewFragment;
 import com.example.damien.lancamentodehoras.lancarhora.LancarHoraListViewLoader;
 
 
@@ -62,7 +63,7 @@ public class HomeActivity extends FragmentActivity
                 mTitle = getString(R.string.title_section2);
                 break;
             case INDEX_ETC:
-                selectedFragment = new LancarHoraListViewFragment ();
+                selectedFragment = new LancarHoraListViewFragment();
                 mTitle = getString(R.string.title_section3);
                 break;
             default:
