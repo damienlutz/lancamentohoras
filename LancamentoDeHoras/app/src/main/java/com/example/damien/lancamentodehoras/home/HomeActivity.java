@@ -53,6 +53,7 @@ public class HomeActivity extends FragmentActivity
     }
 
     private static final String TAG = "LancamentoDeHorasActivity";
+
     @Override
     public void onNavigationDrawerItemSelected(int position) {
 
@@ -157,7 +158,7 @@ public class HomeActivity extends FragmentActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-                 return  inflater.inflate(R.layout.fragment_home, container, false);
+            return inflater.inflate(R.layout.fragment_home, container, false);
 
         }
 

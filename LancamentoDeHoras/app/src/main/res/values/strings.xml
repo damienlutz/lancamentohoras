@@ -21,4 +21,6 @@
     
     
     <string name="pick_time">pick_time</string>
+    <string name="usuario">Usuário:</string>
+    <string name="senha">Senha:</string>
 </resources>
