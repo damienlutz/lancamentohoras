@@ -22,7 +22,7 @@ import com.example.damien.lancamentodehoras.R;
  */
 public class LancarHoraFragment extends android.support.v4.app.Fragment {
 
-
+//Oie
 
     public static LancarHoraFragment newInstance() {
         LancarHoraFragment fragment = new LancarHoraFragment();
