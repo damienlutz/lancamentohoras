@@ -1,4 +1,4 @@
-package de.vogella.android.listactivity;
+package com.example.damien.lancamentodehoras.lancarhora;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.damien.lancamentodehoras.R;
 
 public class MySimpleArrayAdapter extends ArrayAdapter<String> {
   private final Context context;
@@ -22,7 +24,7 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
   public View getView(int position, View convertView, ViewGroup parent) {
     LayoutInflater inflater = (LayoutInflater) context
         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    View rowView = inflater.inflate(R.layout.apontarHoraListaItem, parent, false);
+    View rowView = inflater.inflate(R.layout.apontar_hora_hista_item, parent, false);
     TextView textView = (TextView) rowView.findViewById(R.id.dateLine);
     
     textView.setText(values[position]);
