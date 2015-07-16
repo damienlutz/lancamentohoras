@@ -18,20 +18,20 @@
 
             <TextView
                 style="@style/AppTheme"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
+                android:layout_weight="6"
                 android:gravity="center"
                 android:text="@string/usuario"
                 android:textAlignment="center"
                 android:textSize="30dp" />
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_weight="8"
+                android:layout_weight="4"
                 android:digits="a-z."
+                android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:inputType="textPersonName"
                 android:textSize="25dp" />
@@ -46,19 +46,19 @@
 
             <TextView
                 style="@style/AppTheme"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
+                android:layout_weight="6"
                 android:gravity="center"
                 android:text="@string/senha"
                 android:textAlignment="center"
                 android:textSize="30dp" />
 
             <EditText
-                android:layout_width="203dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_weight="1"
+                android:layout_weight="4"
+                android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:inputType="textPassword"
                 android:textSize="25dp" />
@@ -78,7 +78,7 @@
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_centerInParent="true"
             android:text="@string/login" />
     </RelativeLayout>

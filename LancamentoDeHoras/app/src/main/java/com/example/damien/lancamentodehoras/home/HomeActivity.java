@@ -3,7 +3,6 @@ package com.example.damien.lancamentodehoras.home;
 import android.app.Activity;
 
 import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -17,9 +16,9 @@ import android.support.v4.widget.DrawerLayout;
 
 import com.example.damien.lancamentodehoras.NavigationDrawerFragment;
 import com.example.damien.lancamentodehoras.R;
+import com.example.damien.lancamentodehoras.lancarHoraSimples.InserirNovoRegistroFragment;
 import com.example.damien.lancamentodehoras.lancarhora.LancarHoraFragment;
 import com.example.damien.lancamentodehoras.lancarhora.LancarHoraListViewFragment;
-import com.example.damien.lancamentodehoras.lancarhora.LancarHoraListViewLoader;
 
 
 public class HomeActivity extends FragmentActivity
@@ -27,6 +26,7 @@ public class HomeActivity extends FragmentActivity
 
     private static final int INDEX_LANCAR = 1;
     private static final int INDEX_ETC = 2;
+    private static final int INDEX_INSERIR_NOVO_REGISTRO = 3;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -67,6 +67,10 @@ public class HomeActivity extends FragmentActivity
                 selectedFragment = new LancarHoraListViewFragment();
                 mTitle = getString(R.string.title_section3);
                 break;
+            case INDEX_INSERIR_NOVO_REGISTRO:
+                selectedFragment = new InserirNovoRegistroFragment();
+                mTitle = getString(R.string.title_section4);
+                break;
             default:
                 selectedFragment = PlaceholderFragment.newInstance(position + 1);
 
@@ -89,6 +93,9 @@ public class HomeActivity extends FragmentActivity
                 break;
             case 3:
                 mTitle = getString(R.string.title_section3);
+                break;
+            case 4:
+                mTitle = getString(R.string.title_section4);
                 break;
         }
     }

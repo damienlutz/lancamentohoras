@@ -24,6 +24,10 @@
             android:name=".lancarhora.LancarHoraListViewLoader"
             android:label="@string/title_activity_lancar_hora_tela" >
         </activity>
+        <activity
+            android:name=".InserirNovoRegistroFragment"
+            android:label="@string/title_activity_inserir_novo_registro" >
+        </activity>
     </application>
 
 </manifest>
