@@ -18,7 +18,7 @@ public class LancarHoraListViewFragment extends ListFragment {
         "Linux", "OS/2" };
         
         
-    MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(this, values);
+    MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(getActivity(), values);
     setListAdapter(adapter);
   }
 
