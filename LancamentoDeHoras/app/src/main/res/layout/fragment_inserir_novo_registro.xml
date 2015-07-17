@@ -63,31 +63,33 @@
             android:id="@+id/btAtividade"
             android:layout_width="match_parent"
             android:layout_height="120dp"
+            android:background="@color/blue"
+            android:textColor="@color/white"
             android:layout_marginTop="50dp"
             android:text="@string/bt_iniciar_contador" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btCancelar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="170dp"
+        android:background="@color/gray"
+        android:text="@string/bt_limpar_contador"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btEnviar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="30dp"
         android:background="@color/green_success"
         android:text="@string/bt_submeter_contador"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btCancelar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="30dp"
-        android:background="@color/red"
-        android:text="@string/bt_cancelar_contador"
-        android:textColor="@color/white" />
 
 </FrameLayout>

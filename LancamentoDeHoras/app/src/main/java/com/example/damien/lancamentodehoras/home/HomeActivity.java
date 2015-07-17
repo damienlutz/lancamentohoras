@@ -16,6 +16,7 @@ import android.support.v4.widget.DrawerLayout;
 
 import com.example.damien.lancamentodehoras.NavigationDrawerFragment;
 import com.example.damien.lancamentodehoras.R;
+import com.example.damien.lancamentodehoras.lancarHoraSimples.ConsultarRegistroFragment;
 import com.example.damien.lancamentodehoras.lancarHoraSimples.InserirNovoRegistroFragment;
 import com.example.damien.lancamentodehoras.lancarhora.LancarHoraFragment;
 import com.example.damien.lancamentodehoras.lancarhora.LancarHoraListViewFragment;
@@ -27,6 +28,7 @@ public class HomeActivity extends FragmentActivity
     private static final int INDEX_LANCAR = 1;
     private static final int INDEX_ETC = 2;
     private static final int INDEX_INSERIR_NOVO_REGISTRO = 3;
+    private static final int INDEX_CONSULTAR_REGISTRO = 4;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -69,6 +71,10 @@ public class HomeActivity extends FragmentActivity
                 break;
             case INDEX_INSERIR_NOVO_REGISTRO:
                 selectedFragment = new InserirNovoRegistroFragment();
+                mTitle = getString(R.string.title_section4);
+                break;
+            case INDEX_CONSULTAR_REGISTRO:
+                selectedFragment = new ConsultarRegistroFragment();
                 mTitle = getString(R.string.title_section4);
                 break;
             default:

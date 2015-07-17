@@ -3,26 +3,28 @@ package com.example.damien.lancamentodehoras.models;
 /**
  * Created by FranciscoHenrique on 17/07/2015.
  */
-public class lancamentos {
+public class Lancamentos {
+
+    private long _id;
+    private String usuarioLancamento;
     private String horasLancamentos;
     private String projetoLancamento;
     private String emailLancamento;
-    private long _id;
 
-    public String getEmailLancamento() {
-        return emailLancamento;
+    public long get_id() {
+        return _id;
     }
 
-    public void setEmailLancamento(String emailLancamento) {
-        this.emailLancamento = emailLancamento;
+    public void set_id(long _id) {
+        this._id = _id;
     }
 
-    public String getProjetoLancamento() {
-        return projetoLancamento;
+    public String getUsuarioLancamento() {
+        return usuarioLancamento;
     }
 
-    public void setProjetoLancamento(String projetoLancamento) {
-        this.projetoLancamento = projetoLancamento;
+    public void setUsuarioLancamento(String usuarioLancamento) {
+        this.usuarioLancamento = usuarioLancamento;
     }
 
     public String getHorasLancamentos() {
@@ -33,11 +35,19 @@ public class lancamentos {
         this.horasLancamentos = horasLancamentos;
     }
 
-    public long getId() {
-        return _id;
+    public String getProjetoLancamento() {
+        return projetoLancamento;
     }
 
-    public void setId(long _id) {
-        this._id = _id;
+    public void setProjetoLancamento(String projetoLancamento) {
+        this.projetoLancamento = projetoLancamento;
+    }
+
+    public String getEmailLancamento() {
+        return emailLancamento;
+    }
+
+    public void setEmailLancamento(String emailLancamento) {
+        this.emailLancamento = emailLancamento;
     }
 }

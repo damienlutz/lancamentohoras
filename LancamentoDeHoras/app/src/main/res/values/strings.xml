@@ -10,6 +10,7 @@
     <string name="title_section2">Lançar Hora</string>
     <string name="title_section3">Section 3</string>
     <string name="title_section4">Inserir Novo Registro</string>
+    <string name="title_section5">Consultar Registro</string>
     <string name="title_activity_inserir_novo_registro">InserirNovoRegistro</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -27,7 +28,7 @@
     <string name="bt_iniciar_contador">INICIAR</string>
     <string name="bt_parar_contador">PARAR</string>
     <string name="bt_submeter_contador">ENVIAR</string>
-    <string name="bt_cancelar_contador">Cancelar</string>
+    <string name="bt_limpar_contador">Limpar</string>
     <string name="labelIniciadoContador">--:--:--</string>
 
 </resources>
