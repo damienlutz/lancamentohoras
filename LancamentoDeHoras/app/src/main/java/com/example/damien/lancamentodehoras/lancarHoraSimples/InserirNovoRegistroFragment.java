@@ -37,6 +37,9 @@ public class InserirNovoRegistroFragment extends Fragment {
     private Button btAtividade;
     private AlertDialog alerta;
 
+
+    private LancarHoraWS naoSei = new LancarHoraWS();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_inserir_novo_registro, container, false);
@@ -91,13 +94,7 @@ public class InserirNovoRegistroFragment extends Fragment {
     }
 
     private void envia() {
-<<<<<<< HEAD
-        
-=======
-
-
-        new LancarHoraWS().lancarHora();
->>>>>>> origin/master
+        naoSei.lancarHora();
     }
 
     public void cancela() {
