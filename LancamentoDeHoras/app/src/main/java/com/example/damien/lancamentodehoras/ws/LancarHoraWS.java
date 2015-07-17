@@ -13,7 +13,8 @@ public class LancarHoraWS {
 
     public  LancarHoraWS ( Context contextActivity){
         this.contextActivity = contextActivity;
-        jsonTask = new DownloadJsonAsyncTask(contextActivity);
+        //TODO Linha com erro abaixo
+        // jsonTask = new DownloadJsonAsyncTask(contextActivity);
     }
     public void lancarHora(){
         jsonTask.execute("https://api.twitter.com/1/trends/23424768.json");

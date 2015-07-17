@@ -14,11 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.damien.lancamentodehoras.R;
-<<<<<<< HEAD
+
 import com.example.damien.lancamentodehoras.database.DBCore;
 import com.example.damien.lancamentodehoras.models.Lancamentos;
-=======
->>>>>>> origin/master
+
 import com.example.damien.lancamentodehoras.ws.LancarHoraWS;
 
 import java.sql.Date;
@@ -28,6 +27,11 @@ import java.text.SimpleDateFormat;
  * A simple {@link Fragment} subclass.
  */
 public class InserirNovoRegistroFragment extends Fragment {
+
+    //TODO Linha com erro abaixo
+    //private LancarHoraWS lancarHoraWS = new LancarHoraWS();
+
+    private LancarHoraWS ws;
 
     public InserirNovoRegistroFragment() {
     }
@@ -45,11 +49,6 @@ public class InserirNovoRegistroFragment extends Fragment {
     EditText projeto;
     String email;
 
-<<<<<<< HEAD
-    private LancarHoraWS lancarHoraWS = new LancarHoraWS();
-=======
-    private LancarHoraWS ws;
->>>>>>> origin/master
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -113,17 +112,15 @@ public class InserirNovoRegistroFragment extends Fragment {
     }
 
     private void envia() {
-<<<<<<< HEAD
+
         //DBCore db = new DBCore(getActivity());
         //lancamentos.setUsuarioLancamento(usuario = getActivity().findViewById(R.id.btCancelar).toString());
 
         lancamentos.setUsuarioLancamento("DEU CERTO!");
         lancamentos.setHorasLancamentos(horasRegistradas);
-        lancarHoraWS.lancarHora();
-        db.inserir(lancamentos);
-=======
         ws.lancarHora();
->>>>>>> origin/master
+        db.inserir(lancamentos);
+        ws.lancarHora();
     }
 
     public void cancela() {
