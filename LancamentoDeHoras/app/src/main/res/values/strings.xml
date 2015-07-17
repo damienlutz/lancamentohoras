@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lancamento De Horas</string>
+    <string name="app_name">Lancamento de Horas</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -28,5 +28,6 @@
     <string name="bt_parar_contador">PARAR</string>
     <string name="bt_submeter_contador">ENVIAR</string>
     <string name="bt_cancelar_contador">Cancelar</string>
+    <string name="labelIniciadoContador">--:--:--</string>
 
 </resources>
