@@ -32,6 +32,10 @@ public class DownloadJsonAsyncTask extends AsyncTask<String, Void, List<Trend>> 
 
     Context contextActivity;
 
+    public  DownloadJsonAsyncTask ( Context contextActivity){
+        this.contextActivity = contextActivity;
+    }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();

@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.preference.DialogPreference;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.damien.lancamentodehoras.R;
-import com.example.damien.lancamentodehoras.ws.DownloadJsonAsyncTask;
 import com.example.damien.lancamentodehoras.ws.LancarHoraWS;
 
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-
-import static android.widget.Toast.LENGTH_SHORT;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,7 +34,7 @@ public class InserirNovoRegistroFragment extends Fragment {
     private AlertDialog alerta;
 
 
-    private LancarHoraWS naoSei = new LancarHoraWS();
+    private LancarHoraWS ws;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +43,8 @@ public class InserirNovoRegistroFragment extends Fragment {
         statusContador = (TextView) view.findViewById(R.id.statusContador);
         iniciadoContador = (TextView) view.findViewById(R.id.iniciadoContador);
         btAtividade = (Button) view.findViewById(R.id.btAtividade);
+
+        ws = new LancarHoraWS(getActivity());
         return view;
 
     }
@@ -94,7 +92,7 @@ public class InserirNovoRegistroFragment extends Fragment {
     }
 
     private void envia() {
-        naoSei.lancarHora();
+        ws.lancarHora();
     }
 
     public void cancela() {
