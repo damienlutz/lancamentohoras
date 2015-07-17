@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.damien.lancamentodehoras.R;
+import com.example.damien.lancamentodehoras.ws.DownloadJsonAsyncTask;
+import com.example.damien.lancamentodehoras.ws.LancarHoraWS;
 
 
 import java.sql.Date;
@@ -89,7 +91,13 @@ public class InserirNovoRegistroFragment extends Fragment {
     }
 
     private void envia() {
+<<<<<<< HEAD
         
+=======
+
+
+        new LancarHoraWS().lancarHora();
+>>>>>>> origin/master
     }
 
     public void cancela() {
