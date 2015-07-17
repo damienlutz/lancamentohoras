@@ -17,7 +17,6 @@ public class BDCore extends SQLiteOpenHelper {
         super(ctx, NOME_BD, null, VERSAO_BD);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase bd) {
         bd.execSQL(CREATE_TABLE);
