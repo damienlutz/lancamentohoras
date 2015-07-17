@@ -14,8 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.damien.lancamentodehoras.R;
+<<<<<<< HEAD
 import com.example.damien.lancamentodehoras.database.DBCore;
 import com.example.damien.lancamentodehoras.models.Lancamentos;
+=======
+>>>>>>> origin/master
 import com.example.damien.lancamentodehoras.ws.LancarHoraWS;
 
 import java.sql.Date;
@@ -42,7 +45,11 @@ public class InserirNovoRegistroFragment extends Fragment {
     EditText projeto;
     String email;
 
+<<<<<<< HEAD
     private LancarHoraWS lancarHoraWS = new LancarHoraWS();
+=======
+    private LancarHoraWS ws;
+>>>>>>> origin/master
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,6 +58,8 @@ public class InserirNovoRegistroFragment extends Fragment {
         statusContador = (TextView) view.findViewById(R.id.statusContador);
         iniciadoContador = (TextView) view.findViewById(R.id.iniciadoContador);
         btAtividade = (Button) view.findViewById(R.id.btAtividade);
+
+        ws = new LancarHoraWS(getActivity());
         return view;
     }
 
@@ -104,6 +113,7 @@ public class InserirNovoRegistroFragment extends Fragment {
     }
 
     private void envia() {
+<<<<<<< HEAD
         //DBCore db = new DBCore(getActivity());
         //lancamentos.setUsuarioLancamento(usuario = getActivity().findViewById(R.id.btCancelar).toString());
 
@@ -111,6 +121,9 @@ public class InserirNovoRegistroFragment extends Fragment {
         lancamentos.setHorasLancamentos(horasRegistradas);
         lancarHoraWS.lancarHora();
         db.inserir(lancamentos);
+=======
+        ws.lancarHora();
+>>>>>>> origin/master
     }
 
     public void cancela() {
