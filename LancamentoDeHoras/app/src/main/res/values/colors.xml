@@ -11,5 +11,8 @@
     <color name="white">#FFFFFF</color>
     <color name="blue">#3F51B5</color>
     <color name="gray">#9E9E9E</color>
+    <color name="verde_ilegra">#CDDC39</color>
+    <color name="laranja_ilegra">#FF9800</color>
+    <color name="cinza_ilegra">#424242</color>
 
 </resources>

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +39,7 @@ public class InserirNovoRegistroFragment extends Fragment {
 
     private TextView statusContador;
     private TextView iniciadoContador;
-    private Button btAtividade;
+    private ImageButton btAtividade;
     private AlertDialog alerta;
     private Lancamentos lancamentos = new Lancamentos();
     String horasRegistradas = null;
@@ -56,22 +57,22 @@ public class InserirNovoRegistroFragment extends Fragment {
         addListeners(view);
         statusContador = (TextView) view.findViewById(R.id.statusContador);
         iniciadoContador = (TextView) view.findViewById(R.id.iniciadoContador);
-        btAtividade = (Button) view.findViewById(R.id.btAtividade);
+        btAtividade = (ImageButton) view.findViewById(R.id.btAtividade);
 
         ws = new LancarHoraWS(getActivity());
         return view;
     }
 
     public void addListeners(View view) {
-        final Button btAtividade = (Button) view.findViewById(R.id.btAtividade);
+        final ImageButton btAtividade = (ImageButton) view.findViewById(R.id.btAtividade);
         btAtividade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (btAtividade.getText().equals("INICIAR")) {
-                    iniciaContador();
-                } else if (btAtividade.getText().equals("FINALIZAR")) {
-                    pararContador();
-                }
+               // if (btAtividade.getText().equals("INICIAR")) {
+                 //   iniciaContador();
+//                } else if (btAtividade.getText().equals("FINALIZAR")) {
+//                    pararContador();
+//                }
             }
         });
 
@@ -79,13 +80,13 @@ public class InserirNovoRegistroFragment extends Fragment {
         btEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (btAtividade.getText().equals("INICIAR") && (horasRegistradas != null)) {
-                    envia();
-                } else if (btAtividade.getText().equals("INICIAR") && (horasRegistradas == null)) {
-                    Toast.makeText(getActivity(), "Você precisa logar horas antes de enviar!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "Finalize a sessão de trabalho antes de Enviar.", Toast.LENGTH_SHORT).show();
-                }
+//                if (btAtividade.getText().equals("INICIAR") && (horasRegistradas != null)) {
+//                    envia();
+//                } else if (btAtividade.getText().equals("INICIAR") && (horasRegistradas == null)) {
+//                    Toast.makeText(getActivity(), "Você precisa logar horas antes de enviar!", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(getActivity(), "Finalize a sessão de trabalho antes de Enviar.", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 
@@ -101,14 +102,14 @@ public class InserirNovoRegistroFragment extends Fragment {
     public void iniciaContador() {
         statusContador.setText("RODANDO");
         iniciadoContador.setText(new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())));
-        btAtividade.setText("FINALIZAR");
+//        btAtividade.setText("FINALIZAR");
     }
 
     private void pararContador() {
         statusContador.setText("PARADO");
         horasRegistradas = getText(R.id.iniciadoContador).toString();
         iniciadoContador.setText("--:--:--");
-        btAtividade.setText("INICIAR");
+//        btAtividade.setText("INICIAR");
     }
 
     private void envia() {
@@ -125,29 +126,29 @@ public class InserirNovoRegistroFragment extends Fragment {
 
     public void cancela() {
 
-        if (btAtividade.getText().equals("FINALIZAR")) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("Confirmação");
-            builder.setMessage("Cancelar o contador?");
-            builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(getActivity(), "Contador cancelado.", Toast.LENGTH_SHORT).show();
-                    statusContador.setText("PARADO");
-                    iniciadoContador.setText("--:--:--");
-                    btAtividade.setText("INICIAR");
-                    horasRegistradas = null;
-                }
-            });
-            builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    alerta.dismiss();
-                }
-            });
-            alerta = builder.create();
-            alerta.show();
-        } else {
-        }
+//        if (btAtividade.getText().equals("FINALIZAR")) {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//            builder.setTitle("Confirmação");
+//            builder.setMessage("Cancelar o contador?");
+//            builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    Toast.makeText(getActivity(), "Contador cancelado.", Toast.LENGTH_SHORT).show();
+//                    statusContador.setText("PARADO");
+//                    iniciadoContador.setText("--:--:--");
+//                    btAtividade.setText("INICIAR");
+//                    horasRegistradas = null;
+//                }
+//            });
+//            builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    alerta.dismiss();
+//                }
+//            });
+//            alerta = builder.create();
+//            alerta.show();
+//        } else {
+//        }
     }
 }

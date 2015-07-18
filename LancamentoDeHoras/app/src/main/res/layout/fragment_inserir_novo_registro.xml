@@ -59,14 +59,14 @@
                 android:textSize="30dp" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btAtividade"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:background="@color/blue"
-            android:textColor="@color/white"
-            android:layout_marginTop="50dp"
-            android:text="@string/bt_iniciar_contador" />
+            <ImageButton
+                android:id="@+id/btAtividade"
+                android:layout_width="fill_parent"
+                android:layout_height="150dp"
+                android:scaleType="fitCenter"
+                android:background="@drawable/logotipo_button"/>
+
+
     </LinearLayout>
 
     <Button
@@ -75,7 +75,7 @@
         android:layout_height="30dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="170dp"
-        android:background="@color/gray"
+        android:background="@color/cinza_ilegra"
         android:text="@string/bt_limpar_contador"
         android:textColor="@color/white" />
 
@@ -85,9 +85,9 @@
         android:layout_height="70dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="30dp"
-        android:background="@color/green_success"
+        android:background="@color/verde_ilegra"
         android:text="@string/bt_submeter_contador"
-        android:textColor="@color/white"
+        android:textColor="@color/cinza_ilegra"
         android:textSize="20dp"
         android:textStyle="bold" />
 
