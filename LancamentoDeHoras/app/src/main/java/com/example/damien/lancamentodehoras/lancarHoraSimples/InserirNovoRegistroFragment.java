@@ -42,7 +42,7 @@ public class InserirNovoRegistroFragment extends Fragment {
     private ImageButton btAtividade;
     private AlertDialog alerta;
     private Lancamentos lancamentos = new Lancamentos();
-    String horasRegistradas = null;
+    String horasRegistradas;
     DBCore db;
 
     String usuario = "DEU CERTO!";
@@ -113,15 +113,13 @@ public class InserirNovoRegistroFragment extends Fragment {
     }
 
     private void envia() {
-
-        //DBCore db = new DBCore(getActivity());
-        //lancamentos.setUsuarioLancamento(usuario = getActivity().findViewById(R.id.btCancelar).toString());
+        DBCore db = new DBCore(getActivity());
+               //lancamentos.setUsuarioLancamento(usuario = getActivity().findViewById(R.id.btCancelar).toString());
 
         lancamentos.setUsuarioLancamento("DEU CERTO!");
         lancamentos.setHorasLancamentos(horasRegistradas);
-        ws.lancarHora();
+        //ws.lancarHora();
         db.inserir(lancamentos);
-        ws.lancarHora();
     }
 
     public void cancela() {
