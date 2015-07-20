@@ -24,6 +24,7 @@ public class HomeActivity extends FragmentActivity
 
     private static final int INDEX_LANCAR_HORA = 0;
     private static final int INDEX_PROJETO = 1;
+    private static final int INDEX_VISUALIZAR_LANCAMENTO = 2;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -47,7 +48,7 @@ public class HomeActivity extends FragmentActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-      }
+    }
 
     private static final String TAG = "LancamentoDeHorasActivity";
 

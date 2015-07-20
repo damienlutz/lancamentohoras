@@ -2,6 +2,7 @@ package com.example.damien.lancamentodehoras.lancarHoraSimples;
 
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,19 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.damien.lancamentodehoras.R;
 
-import com.example.damien.lancamentodehoras.database.DBCore;
+import com.example.damien.lancamentodehoras.database.OpenHelperLancamento;
 import com.example.damien.lancamentodehoras.model.Lancamentos;
 
 import com.example.damien.lancamentodehoras.model.LancamentosDAO;
 import com.example.damien.lancamentodehoras.ws.LancarHoraWS;
-
-import org.w3c.dom.Text;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -44,7 +42,7 @@ public class InserirNovoRegistroFragment extends Fragment {
     private Button btAtividade;
     private AlertDialog alerta;
     String horasRegistradas;
-    DBCore db;
+    OpenHelperLancamento db;
 
     String usuario = "DEU CERTO!";
     String horas;
@@ -92,8 +90,9 @@ public class InserirNovoRegistroFragment extends Fragment {
                     Lancamentos lancamentos = new Lancamentos(campoUsuario, horasRegistradas);
                     LancamentosDAO dao = new LancamentosDAO(getActivity());
                     dao.inserir(lancamentos);
-
-
+                    Toast.makeText(getActivity(), "Registro inserido com sucesso!", Toast.LENGTH_SHORT).show();
+                    statusContador.setText("PARADO");
+                    iniciadoContador.setText("--:--:--");
                 } else if (btAtividade.getText().equals("INICIAR") && (horasRegistradas == null)) {
                     Toast.makeText(getActivity(), "Você precisa logar horas antes de enviar!", Toast.LENGTH_SHORT).show();
                 } else {
@@ -106,7 +105,7 @@ public class InserirNovoRegistroFragment extends Fragment {
         btCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cancela();
+                limpar();
             }
         });
     }
@@ -123,41 +122,53 @@ public class InserirNovoRegistroFragment extends Fragment {
         btAtividade.setText("INICIAR");
     }
 
-//    private void envia() {
-//        DBCore db = new DBCore(getActivity());
-//        //lancamentos.setUsuarioLancamento(usuario = getActivity().findViewById(R.id.btCancelar).toString());
-//
-//        lancamentos.setUsuarioLancamento("DEU CERTO!");
-//        lancamentos.setHorasLancamentos(horasRegistradas);
-//        //ws.lancarHora();
-//        db.inserir(lancamentos);
-//    }
+    public void limpar() {
+        if (btAtividade.getText().equals("FINALIZAR")) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Confirmação");
+            builder.setMessage("Cancelar o contador?");
+            builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(getActivity(), "Contador cancelado.", Toast.LENGTH_SHORT).show();
+                    statusContador.setText("PARADO");
+                    iniciadoContador.setText("--:--:--");
+                    btAtividade.setText("INICIAR");
+                    horasRegistradas = null;
+                }
+            });
+            builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    alerta.dismiss();
+                }
+            });
+            alerta = builder.create();
+            alerta.show();
+        } else if (statusContador.getText().equals("PARADO") &&(iniciadoContador.getText() != ("--:--:--"))){
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Confirmação");
+            builder.setMessage("Você tem horas registradas. Deseja cancelar o contador?");
+            builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(getActivity(), "Horas canceladas.", Toast.LENGTH_SHORT).show();
+                    statusContador.setText("PARADO");
+                    iniciadoContador.setText("--:--:--");
+                    btAtividade.setText("INICIAR");
+                    horasRegistradas = null;
+                }
+            });
+            builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    alerta.dismiss();
+                }
+            });
+            alerta = builder.create();
+            alerta.show();
+        }else{
 
-    public void cancela() {
-
-//        if (btAtividade.getText().equals("FINALIZAR")) {
-//            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//            builder.setTitle("Confirmação");
-//            builder.setMessage("Cancelar o contador?");
-//            builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    Toast.makeText(getActivity(), "Contador cancelado.", Toast.LENGTH_SHORT).show();
-//                    statusContador.setText("PARADO");
-//                    iniciadoContador.setText("--:--:--");
-//                    btAtividade.setText("INICIAR");
-//                    horasRegistradas = null;
-//                }
-//            });
-//            builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    alerta.dismiss();
-//                }
-//            });
-//            alerta = builder.create();
-//            alerta.show();
-//        } else {
-//        }
+        }
     }
 }

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.damien.lancamentodehoras.database.DBCore;
+import com.example.damien.lancamentodehoras.database.OpenHelperLancamento;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +15,10 @@ import java.util.List;
  */
 public class LancamentosDAO {
 
-    DBCore bdOpenHelper;
+    OpenHelperLancamento bdOpenHelper;
 
     public LancamentosDAO(Context contexto) {
-        bdOpenHelper = new DBCore(contexto);
+        bdOpenHelper = new OpenHelperLancamento(contexto);
     }
 
     public boolean inserir(Lancamentos lancamentos) {
@@ -31,21 +31,21 @@ public class LancamentosDAO {
         return (sucesso);
     }
 
-//    public List<Lancamentos> getAll() {
-//        List<Lancamentos> listaProdutos = new ArrayList<Lancamentos>();
-//
-//        SQLiteDatabase banco = bdOpenHelper.getReadableDatabase();
-//        Cursor cursor = banco.query("produto",
-//                new String[]{"id", "codigo", "nome", "preco"},
-//                null, null, null, null, null);
-//
-//        while (cursor.moveToNext()) {
-//            Lancamentos produto = new Lancamentos(
-//                    cursor.getString(cursor.getColumnIndex("usuarioLancamento")),
-//                    cursor.getString(cursor.getColumnIndex("horasLancamentos")));
-//            listaProdutos.add(produto);
-//        }
-//        return (listaProdutos);
-//    }
+    public List<Lancamentos> getAll() {
+        List<Lancamentos> listaProdutos = new ArrayList<Lancamentos>();
+
+        SQLiteDatabase banco = bdOpenHelper.getReadableDatabase();
+        Cursor cursor = banco.query("produto",
+                new String[]{"id", "usuario", "hora"},
+                null, null, null, null, null);
+
+        while (cursor.moveToNext()) {
+            Lancamentos produto = new Lancamentos(
+                    cursor.getString(cursor.getColumnIndex("usuarioLancamento")),
+                    cursor.getString(cursor.getColumnIndex("horasLancamentos")));
+            listaProdutos.add(produto);
+        }
+        return (listaProdutos);
+    }
 }
 
