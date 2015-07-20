@@ -2,7 +2,6 @@ package com.example.damien.lancamentodehoras.lancarHoraSimples;
 
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,9 +16,12 @@ import android.widget.Toast;
 import com.example.damien.lancamentodehoras.R;
 
 import com.example.damien.lancamentodehoras.database.DBCore;
-import com.example.damien.lancamentodehoras.models.Lancamentos;
+import com.example.damien.lancamentodehoras.model.Lancamentos;
 
+import com.example.damien.lancamentodehoras.model.LancamentosDAO;
 import com.example.damien.lancamentodehoras.ws.LancarHoraWS;
+
+import org.w3c.dom.Text;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -39,9 +41,8 @@ public class InserirNovoRegistroFragment extends Fragment {
 
     private TextView statusContador;
     private TextView iniciadoContador;
-    private ImageButton btAtividade;
+    private Button btAtividade;
     private AlertDialog alerta;
-    private Lancamentos lancamentos = new Lancamentos();
     String horasRegistradas;
     DBCore db;
 
@@ -53,26 +54,28 @@ public class InserirNovoRegistroFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_inserir_novo_registro, container, false);
+
         addListeners(view);
         statusContador = (TextView) view.findViewById(R.id.statusContador);
         iniciadoContador = (TextView) view.findViewById(R.id.iniciadoContador);
-        btAtividade = (ImageButton) view.findViewById(R.id.btAtividade);
+        btAtividade = (Button) view.findViewById(R.id.btAtividade);
 
         ws = new LancarHoraWS(getActivity());
         return view;
     }
 
     public void addListeners(View view) {
-        final ImageButton btAtividade = (ImageButton) view.findViewById(R.id.btAtividade);
+        final TextView btAtividade = (TextView) view.findViewById(R.id.btAtividade);
         btAtividade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // if (btAtividade.getText().equals("INICIAR")) {
-                 //   iniciaContador();
-//                } else if (btAtividade.getText().equals("FINALIZAR")) {
-//                    pararContador();
-//                }
+                if (btAtividade.getText().equals("INICIAR")) {
+                    iniciaContador();
+                } else if (btAtividade.getText().equals("FINALIZAR")) {
+                    pararContador();
+                }
             }
         });
 
@@ -80,13 +83,22 @@ public class InserirNovoRegistroFragment extends Fragment {
         btEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (btAtividade.getText().equals("INICIAR") && (horasRegistradas != null)) {
-//                    envia();
-//                } else if (btAtividade.getText().equals("INICIAR") && (horasRegistradas == null)) {
-//                    Toast.makeText(getActivity(), "Você precisa logar horas antes de enviar!", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(getActivity(), "Finalize a sessão de trabalho antes de Enviar.", Toast.LENGTH_SHORT).show();
-//                }
+                if (btAtividade.getText().equals("INICIAR") && (horasRegistradas != null)) {
+
+                    //EditText campoUsuario = (EditText) getActivity().findViewById(R.id.statusContador);
+                    String campoUsuario = "Funcionou!"; //MOCK
+                    //TODO Pegar Usuário passado da tela de login por intent
+
+                    Lancamentos lancamentos = new Lancamentos(campoUsuario, horasRegistradas);
+                    LancamentosDAO dao = new LancamentosDAO(getActivity());
+                    dao.inserir(lancamentos);
+
+
+                } else if (btAtividade.getText().equals("INICIAR") && (horasRegistradas == null)) {
+                    Toast.makeText(getActivity(), "Você precisa logar horas antes de enviar!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "Finalize a sessão de trabalho antes de Enviar.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -102,25 +114,24 @@ public class InserirNovoRegistroFragment extends Fragment {
     public void iniciaContador() {
         statusContador.setText("RODANDO");
         iniciadoContador.setText(new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())));
-//        btAtividade.setText("FINALIZAR");
+        btAtividade.setText("FINALIZAR");
     }
 
     private void pararContador() {
         statusContador.setText("PARADO");
         horasRegistradas = getText(R.id.iniciadoContador).toString();
-        iniciadoContador.setText("--:--:--");
-//        btAtividade.setText("INICIAR");
+        btAtividade.setText("INICIAR");
     }
 
-    private void envia() {
-        DBCore db = new DBCore(getActivity());
-               //lancamentos.setUsuarioLancamento(usuario = getActivity().findViewById(R.id.btCancelar).toString());
-
-        lancamentos.setUsuarioLancamento("DEU CERTO!");
-        lancamentos.setHorasLancamentos(horasRegistradas);
-        //ws.lancarHora();
-        db.inserir(lancamentos);
-    }
+//    private void envia() {
+//        DBCore db = new DBCore(getActivity());
+//        //lancamentos.setUsuarioLancamento(usuario = getActivity().findViewById(R.id.btCancelar).toString());
+//
+//        lancamentos.setUsuarioLancamento("DEU CERTO!");
+//        lancamentos.setHorasLancamentos(horasRegistradas);
+//        //ws.lancarHora();
+//        db.inserir(lancamentos);
+//    }
 
     public void cancela() {
 
