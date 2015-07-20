@@ -16,19 +16,14 @@ import android.support.v4.widget.DrawerLayout;
 
 import com.example.damien.lancamentodehoras.NavigationDrawerFragment;
 import com.example.damien.lancamentodehoras.R;
-import com.example.damien.lancamentodehoras.lancarHoraSimples.ConsultarRegistroFragment;
 import com.example.damien.lancamentodehoras.lancarHoraSimples.InserirNovoRegistroFragment;
-import com.example.damien.lancamentodehoras.lancarhora.LancarHoraFragment;
-import com.example.damien.lancamentodehoras.lancarhora.LancarHoraListViewFragment;
 
 
 public class HomeActivity extends FragmentActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
-    private static final int INDEX_LANCAR = 1;
-    private static final int INDEX_ETC = 2;
-    private static final int INDEX_INSERIR_NOVO_REGISTRO = 3;
-    private static final int INDEX_CONSULTAR_REGISTRO = 4;
+    private static final int INDEX_LANCAR_HORA = 0;
+    private static final int INDEX_PROJETO = 1;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -46,13 +41,13 @@ public class HomeActivity extends FragmentActivity
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
+        mTitle = getString(R.string.menu_lancar_hora);
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-    }
+      }
 
     private static final String TAG = "LancamentoDeHorasActivity";
 
@@ -61,25 +56,16 @@ public class HomeActivity extends FragmentActivity
 
         Fragment selectedFragment;
         switch (position) {
-            case INDEX_LANCAR:
-                selectedFragment = new LancarHoraFragment();
-                mTitle = getString(R.string.title_section2);
-                break;
-            case INDEX_ETC:
-                selectedFragment = new LancarHoraListViewFragment();
-                mTitle = getString(R.string.title_section3);
-                break;
-            case INDEX_INSERIR_NOVO_REGISTRO:
+            case INDEX_LANCAR_HORA:
                 selectedFragment = new InserirNovoRegistroFragment();
-                mTitle = getString(R.string.title_section4);
+                mTitle = getString(R.string.menu_lancar_hora);
                 break;
-            case INDEX_CONSULTAR_REGISTRO:
-                selectedFragment = new ConsultarRegistroFragment();
-                mTitle = getString(R.string.title_section4);
+            case INDEX_PROJETO:
+                selectedFragment = PlaceholderFragment.newInstance(position + 1);
+                mTitle = getString(R.string.menu_projeto);
                 break;
             default:
                 selectedFragment = PlaceholderFragment.newInstance(position + 1);
-
         }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -92,16 +78,10 @@ public class HomeActivity extends FragmentActivity
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+                mTitle = getString(R.string.menu_lancar_hora);
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-            case 4:
-                mTitle = getString(R.string.title_section4);
+                mTitle = getString(R.string.menu_projeto);
                 break;
         }
     }

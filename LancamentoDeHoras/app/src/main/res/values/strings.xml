@@ -6,10 +6,10 @@
     <string name="login">Login</string>
     <string name="title_activity_home">Home</string>
 
-    <string name="title_section1">Projetos</string>
+    <string name="menu_projeto">Projetos</string>
     <string name="title_section2">Lançar Hora</string>
     <string name="title_section3">Section 3</string>
-    <string name="title_section4">Inserir Novo Registro</string>
+    <string name="menu_lancar_hora">Lançar Hora</string>
     <string name="title_section5">Consultar Registro</string>
     <string name="title_activity_inserir_novo_registro">InserirNovoRegistro</string>
 
