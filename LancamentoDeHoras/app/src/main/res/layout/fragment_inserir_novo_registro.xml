@@ -2,16 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.damien.lancamentodehoras.lancarHoraSimples.InserirNovoRegistroFragment"
-    android:background="@color/cinza_ilegra">
+    android:background="@color/cinza_ilegra"
+    tools:context="com.example.damien.lancamentodehoras.lancarHoraSimples.InserirNovoRegistroFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="40dp"
-        android:orientation="vertical"
         android:background="@color/cinza_ilegra"
-        >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,8 +23,8 @@
                 android:layout_weight="4"
                 android:gravity="right"
                 android:text="@string/label_status_contador"
-                android:textSize="30dp"
                 android:textColor="@color/white"
+                android:textSize="30dp"
 
                 android:textStyle="bold" />
 
@@ -50,8 +49,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:gravity="right"
-                android:textColor="@color/white"
                 android:text="@string/label_iniciado_contador"
+                android:textColor="@color/white"
                 android:textSize="30dp"
                 android:textStyle="bold" />
 
@@ -60,55 +59,55 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
-                android:textColor="@color/white"
                 android:gravity="center"
                 android:text="--:--:--"
+                android:textColor="@color/white"
                 android:textSize="30dp" />
         </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
             <!--<ImageButton-->
-                <!--android:id="@+id/btAtividade"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="150dp"-->
-                <!--android:scaleType="fitCenter"-->
-                <!--android:background="@drawable/logotipo_button"/>-->
+            <!--android:id="@+id/btAtividade"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="150dp"-->
+            <!--android:scaleType="fitCenter"-->
+            <!--android:background="@drawable/logotipo_button"/>-->
 
-        <Button
-            android:id="@+id/btAtividade"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:background="@color/verde_ilegra"
-            android:textColor="@color/cinza_ilegra"
-            android:text="@string/bt_iniciar_contador"
-            />
-        <Button
-            android:id="@+id/btCancelar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:background="@color/cinza_ilegra"
-            android:text="@string/bt_limpar_contador"
-            android:textColor="@color/laranja_ilegra" />
+            <Button
+                android:id="@+id/btAtividade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:background="@color/verde_ilegra"
+                android:text="@string/bt_iniciar_contador"
+                android:textColor="@color/cinza_ilegra" />
 
-        <Button
-            android:id="@+id/btEnviar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:background="@color/azul_ilegra"
-            android:text="@string/bt_submeter_contador"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/btCancelar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@color/cinza_ilegra"
+                android:text="@string/bt_limpar_contador"
+                android:textColor="@color/laranja_ilegra" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btEnviar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@color/azul_ilegra"
+                android:text="@string/bt_submeter_contador"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
