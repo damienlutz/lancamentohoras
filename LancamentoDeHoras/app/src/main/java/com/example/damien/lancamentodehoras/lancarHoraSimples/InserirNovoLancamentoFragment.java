@@ -4,6 +4,7 @@ package com.example.damien.lancamentodehoras.lancarHoraSimples;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,18 +28,19 @@ import java.text.SimpleDateFormat;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InserirNovoRegistroFragment extends Fragment {
+public class InserirNovoLancamentoFragment extends Fragment {
 
     //TODO Linha com erro abaixo
     //private LancarHoraWS lancarHoraWS = new LancarHoraWS();
 
     private LancarHoraWS ws;
 
-    public InserirNovoRegistroFragment() {
+    public InserirNovoLancamentoFragment() {
     }
 
     private TextView statusContador;
-    private TextView iniciadoContador;
+    private TextView horaInicial = null;
+    private TextView horaFinal = null;
     private Button btAtividade;
     private AlertDialog alerta;
     String horasRegistradas;
@@ -55,12 +57,11 @@ public class InserirNovoRegistroFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_inserir_novo_registro, container, false);
-
         addListeners(view);
         statusContador = (TextView) view.findViewById(R.id.statusContador);
-        iniciadoContador = (TextView) view.findViewById(R.id.iniciadoContador);
+        horaInicial = (TextView) view.findViewById(R.id.horaInicial);
+        horaFinal = (TextView) view.findViewById(R.id.horaFinal);
         btAtividade = (Button) view.findViewById(R.id.btAtividade);
-
         ws = new LancarHoraWS(getActivity());
         return view;
     }
@@ -82,7 +83,7 @@ public class InserirNovoRegistroFragment extends Fragment {
         btEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (flagStatusContadorRodando == false && (horasRegistradas != null)) {
+                if (flagStatusContadorRodando == false && horaFinal.getText() != "" && horaFinal.getText() != "") {
 
                     //EditText campoUsuario = (EditText) getActivity().findViewById(R.id.statusContador);
                     String campoUsuario = "Funcionou!"; //MOCK
@@ -94,8 +95,9 @@ public class InserirNovoRegistroFragment extends Fragment {
                     Toast.makeText(getActivity(), "Registro inserido com sucesso!", Toast.LENGTH_SHORT).show();
                     flagStatusContadorRodando = false;
                     statusContador.setText("PARADO");
-                    iniciadoContador.setText("--:--:--");
-                } else if (btAtividade.getText().equals("INICIAR") && (horasRegistradas == null)) {
+                    horaInicial.setText("");
+                    horaFinal.setText("");
+                } else if (flagStatusContadorRodando == false && horasRegistradas == null) {
                     Toast.makeText(getActivity(), "Você precisa logar horas antes de enviar!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getActivity(), "Finalize a sessão de trabalho antes de Enviar.", Toast.LENGTH_SHORT).show();
@@ -103,8 +105,8 @@ public class InserirNovoRegistroFragment extends Fragment {
             }
         });
 
-        Button btCancelar = (Button) view.findViewById(R.id.btCancelar);
-        btCancelar.setOnClickListener(new View.OnClickListener() {
+        Button btLimpar = (Button) view.findViewById(R.id.btLimpar);
+        btLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 limpar();
@@ -115,19 +117,47 @@ public class InserirNovoRegistroFragment extends Fragment {
     public void iniciaContador() {
         flagStatusContadorRodando = true;
         statusContador.setText("RODANDO");
-        iniciadoContador.setText(new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())));
+        horaInicial.setText(new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())));
         btAtividade.setText("FINALIZAR");
+        startTimerThread();
+    }
+
+    private void startTimerThread() {
+        final Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            private long startTime = System.currentTimeMillis();
+
+            public void run() {
+                while (flagStatusContadorRodando == true && horaInicial != null) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    handler.post(new Runnable() {
+                        public void run() {
+                            timer();
+                        }
+                    });
+                }
+            }
+        };
+//        new Thread(runnable).start();
     }
 
     private void pararContador() {
         flagStatusContadorRodando = false;
         statusContador.setText("PARADO");
-        horasRegistradas = getText(R.id.iniciadoContador).toString();
+        horaFinal.setText(new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())));
         btAtividade.setText("INICIAR");
     }
 
+    private void timer() {
+        horaFinal.setText(new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())));
+    }
+
     public void limpar() {
-        if (flagStatusContadorRodando == true) {
+        if (flagStatusContadorRodando) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("Confirmação");
             builder.setMessage("Cancelar o contador?");
@@ -137,9 +167,9 @@ public class InserirNovoRegistroFragment extends Fragment {
                     flagStatusContadorRodando = false;
                     Toast.makeText(getActivity(), "Contador cancelado.", Toast.LENGTH_SHORT).show();
                     statusContador.setText("PARADO");
-                    iniciadoContador.setText("--:--:--");
+                    horaInicial.setText("");
+                    horaFinal.setText("");
                     btAtividade.setText("INICIAR");
-                    horasRegistradas = null;
                 }
             });
             builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
@@ -150,7 +180,7 @@ public class InserirNovoRegistroFragment extends Fragment {
             });
             alerta = builder.create();
             alerta.show();
-        } else if (flagStatusContadorRodando == false && (iniciadoContador.getText() != ("--:--:--"))) {
+        } else if (flagStatusContadorRodando == false && horaInicial.getText() != "") {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("Confirmação");
             builder.setMessage("Você tem horas registradas. Deseja cancelar o contador?");
@@ -159,9 +189,10 @@ public class InserirNovoRegistroFragment extends Fragment {
                 public void onClick(DialogInterface dialog, int which) {
                     Toast.makeText(getActivity(), "Horas canceladas.", Toast.LENGTH_SHORT).show();
                     statusContador.setText("PARADO");
-                    iniciadoContador.setText("--:--:--");
+                    horaInicial.setText("");
+                    horaFinal.setText("");
                     btAtividade.setText("INICIAR");
-                    horasRegistradas = null;
+                    horasRegistradas = "";
                 }
             });
             builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
@@ -173,7 +204,6 @@ public class InserirNovoRegistroFragment extends Fragment {
             alerta = builder.create();
             alerta.show();
         } else {
-
         }
     }
 }

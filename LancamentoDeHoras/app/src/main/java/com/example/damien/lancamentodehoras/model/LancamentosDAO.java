@@ -35,14 +35,14 @@ public class LancamentosDAO {
         List<Lancamentos> listaProdutos = new ArrayList<Lancamentos>();
 
         SQLiteDatabase banco = bdOpenHelper.getReadableDatabase();
-        Cursor cursor = banco.query("produto",
-                new String[]{"id", "usuario", "hora"},
+        Cursor cursor = banco.query("lancamentos",
+                new String[]{"usuario", "horas"},
                 null, null, null, null, null);
 
         while (cursor.moveToNext()) {
             Lancamentos produto = new Lancamentos(
-                    cursor.getString(cursor.getColumnIndex("usuarioLancamento")),
-                    cursor.getString(cursor.getColumnIndex("horasLancamentos")));
+                    cursor.getString(cursor.getColumnIndex("usuario")),
+                    cursor.getString(cursor.getColumnIndex("horas")));
             listaProdutos.add(produto);
         }
         return (listaProdutos);

@@ -16,16 +16,18 @@ import android.support.v4.widget.DrawerLayout;
 
 import com.example.damien.lancamentodehoras.NavigationDrawerFragment;
 import com.example.damien.lancamentodehoras.R;
-import com.example.damien.lancamentodehoras.lancarHoraSimples.InserirNovoRegistroFragment;
+import com.example.damien.lancamentodehoras.lancarHoraSimples.ConsultarLancamentosFragment;
+import com.example.damien.lancamentodehoras.lancarHoraSimples.InserirNovoLancamentoFragment;
 
 
 public class HomeActivity extends FragmentActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     private static final int INDEX_LANCAR_HORA = 0;
-    private static final int INDEX_PROJETO = 1;
-    private static final int INDEX_VISUALIZAR_LANCAMENTO = 2;
-    /**
+    private static final int INDEX_CONSULTAR_LANCAMENTOS = 1;
+    private static final int INDEX_PROJETO = 2;
+
+        /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
@@ -58,8 +60,12 @@ public class HomeActivity extends FragmentActivity
         Fragment selectedFragment;
         switch (position) {
             case INDEX_LANCAR_HORA:
-                selectedFragment = new InserirNovoRegistroFragment();
+                selectedFragment = new InserirNovoLancamentoFragment();
                 mTitle = getString(R.string.menu_lancar_hora);
+                break;
+            case INDEX_CONSULTAR_LANCAMENTOS:
+                selectedFragment = new ConsultarLancamentosFragment();
+                mTitle = getString(R.string.menu_consultar_lancamentos);
                 break;
             case INDEX_PROJETO:
                 selectedFragment = PlaceholderFragment.newInstance(position + 1);
@@ -82,6 +88,9 @@ public class HomeActivity extends FragmentActivity
                 mTitle = getString(R.string.menu_lancar_hora);
                 break;
             case 2:
+                mTitle = getString(R.string.menu_consultar_lancamentos);
+                break;
+            case 3:
                 mTitle = getString(R.string.menu_projeto);
                 break;
         }

@@ -10,6 +10,7 @@
     <string name="title_section2">Lançar Hora</string>
     <string name="title_section3">Section 3</string>
     <string name="menu_lancar_hora">Lançar Hora</string>
+    <string name="menu_consultar_lancamentos">Consultar Lançamentos</string>
     <string name="title_section5">Consultar Registro</string>
     <string name="title_activity_inserir_novo_registro">InserirNovoRegistro</string>
 
@@ -24,8 +25,8 @@
     <string name="pick_time">pick_time</string>
     <string name="usuario">Usuário:</string>
     <string name="senha">Senha:</string>
-    <string name="label_status_contador">Status:</string>
-    <string name="label_iniciado_contador">Iniciado:</string>
+    <string name="label_status_contador">Status</string>
+    <string name="label_iniciado_contador">Iniciado</string>
 
     <string name="bt_iniciar_contador">INICIAR</string>
     <string name="bt_parar_contador">PARAR</string>
