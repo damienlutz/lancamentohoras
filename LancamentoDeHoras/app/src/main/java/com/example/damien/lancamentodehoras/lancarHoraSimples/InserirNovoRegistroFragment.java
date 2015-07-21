@@ -42,6 +42,7 @@ public class InserirNovoRegistroFragment extends Fragment {
     private Button btAtividade;
     private AlertDialog alerta;
     String horasRegistradas;
+    boolean flagStatusContadorRodando = false;
     OpenHelperLancamento db;
 
     String usuario = "DEU CERTO!";
@@ -69,9 +70,9 @@ public class InserirNovoRegistroFragment extends Fragment {
         btAtividade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (btAtividade.getText().equals("INICIAR")) {
+                if (flagStatusContadorRodando == false) {
                     iniciaContador();
-                } else if (btAtividade.getText().equals("FINALIZAR")) {
+                } else if (flagStatusContadorRodando == true) {
                     pararContador();
                 }
             }
@@ -81,7 +82,7 @@ public class InserirNovoRegistroFragment extends Fragment {
         btEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (btAtividade.getText().equals("INICIAR") && (horasRegistradas != null)) {
+                if (flagStatusContadorRodando == false && (horasRegistradas != null)) {
 
                     //EditText campoUsuario = (EditText) getActivity().findViewById(R.id.statusContador);
                     String campoUsuario = "Funcionou!"; //MOCK
@@ -91,6 +92,7 @@ public class InserirNovoRegistroFragment extends Fragment {
                     LancamentosDAO dao = new LancamentosDAO(getActivity());
                     dao.inserir(lancamentos);
                     Toast.makeText(getActivity(), "Registro inserido com sucesso!", Toast.LENGTH_SHORT).show();
+                    flagStatusContadorRodando = false;
                     statusContador.setText("PARADO");
                     iniciadoContador.setText("--:--:--");
                 } else if (btAtividade.getText().equals("INICIAR") && (horasRegistradas == null)) {
@@ -111,25 +113,28 @@ public class InserirNovoRegistroFragment extends Fragment {
     }
 
     public void iniciaContador() {
+        flagStatusContadorRodando = true;
         statusContador.setText("RODANDO");
         iniciadoContador.setText(new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())));
         btAtividade.setText("FINALIZAR");
     }
 
     private void pararContador() {
+        flagStatusContadorRodando = false;
         statusContador.setText("PARADO");
         horasRegistradas = getText(R.id.iniciadoContador).toString();
         btAtividade.setText("INICIAR");
     }
 
     public void limpar() {
-        if (btAtividade.getText().equals("FINALIZAR")) {
+        if (flagStatusContadorRodando == true) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("Confirmação");
             builder.setMessage("Cancelar o contador?");
             builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    flagStatusContadorRodando = false;
                     Toast.makeText(getActivity(), "Contador cancelado.", Toast.LENGTH_SHORT).show();
                     statusContador.setText("PARADO");
                     iniciadoContador.setText("--:--:--");
@@ -145,7 +150,7 @@ public class InserirNovoRegistroFragment extends Fragment {
             });
             alerta = builder.create();
             alerta.show();
-        } else if (statusContador.getText().equals("PARADO") &&(iniciadoContador.getText() != ("--:--:--"))){
+        } else if (flagStatusContadorRodando == false && (iniciadoContador.getText() != ("--:--:--"))) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("Confirmação");
             builder.setMessage("Você tem horas registradas. Deseja cancelar o contador?");
@@ -167,7 +172,7 @@ public class InserirNovoRegistroFragment extends Fragment {
             });
             alerta = builder.create();
             alerta.show();
-        }else{
+        } else {
 
         }
     }
