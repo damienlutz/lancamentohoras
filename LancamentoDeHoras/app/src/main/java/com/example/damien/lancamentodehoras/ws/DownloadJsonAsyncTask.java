@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * Created by damien on 17/07/15.
  */
-public class DownloadJsonAsyncTask extends AsyncTask<String, String, String> {
+public class DownloadJsonAsyncTask extends AsyncTask<String, Void, String> {
     ProgressDialog dialog;
 
     Context contextActivity;
@@ -43,32 +43,67 @@ public class DownloadJsonAsyncTask extends AsyncTask<String, String, String> {
     }
  @Override
     protected String doInBackground(String... uri) {
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpResponse response;
-        String responseString = null;
-        try {
-            response = httpclient.execute(new HttpGet(uri[0]));
-            StatusLine statusLine = response.getStatusLine();
-            if(statusLine.getStatusCode() == HttpStatus.SC_OK){
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
-                response.getEntity().writeTo(out);
-                responseString = out.toString();
-                out.close();
-            } else{
-                //Closes the connection.
-                response.getEntity().getContent().close();
-                throw new IOException(statusLine.getReasonPhrase());
-            }
-        } catch (ClientProtocolException e) {
-            //TODO Handle problems..
-        } catch (IOException e) {
-            //TODO Handle problems..
-        }
-        return responseString;
+        InputStream inputStream = null;
+    String result = "";
+    try {
+
+        // 1. create HttpClient
+        HttpClient httpclient = getNewHttpClient();
+
+        // 2. make POST request to the given URL
+        HttpPost httpPost = new HttpPost(uri[0]);
+
+        String json = "";
+
+        // 3. build jsonObject
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.accumulate("user", 1);
+        jsonObject.accumulate("student_id", 1);
+        jsonObject.accumulate("user_email", "test@test.com");
+        jsonObject.accumulate("from", "Fri Oct 10 12:38:00 2014 GMT+0200");
+        jsonObject.accumulate("to", "Sat Oct 11 12:38:00 2014 GMT+0200");
+
+        // 4. convert JSONObject to JSON to String
+        json = jsonObject.toString();
+
+        // ** Alternative way to convert Person object to JSON string usin Jackson Lib
+        // ObjectMapper mapper = new ObjectMapper();
+        // json = mapper.writeValueAsString(person);
+
+        // 5. set json to StringEntity
+        StringEntity se = new StringEntity(json);
+
+        // 6. set httpPost Entity
+        httpPost.setEntity(se);
+
+        // 7. Set some headers to inform server about the type of the content
+        httpPost.setHeader("Accept", "application/json");
+        httpPost.setHeader("Content-type", "application/json");
+
+        // 8. Execute POST request to the given URL
+        HttpResponse httpResponse = httpclient.execute(httpPost);
+
+        // 9. receive response as inputStream
+        inputStream = httpResponse.getEntity().getContent();
+
+        // 10. convert inputstream to string
+        if(inputStream != null)
+            result = convertInputStreamToString(inputStream);
+        else
+            result = "Did not work!";
+
+    } catch (Exception e) {
+        Log.d("InputStream", e.getLocalizedMessage());
+    }
+
+    // 11. return result
+    return result;
+    }
     
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        //Do anything with response..
+        Toast.makeText(getBaseContext(), "Received!", Toast.LENGTH_LONG).show();
+        Log.d(TAG,result);
     }
 }
