@@ -101,6 +101,11 @@ public class DownloadJsonAsyncTask extends AsyncTask<String, Void, String> {
 
             // 8. Execute POST request to the given URL
             HttpResponse httpResponse = httpclient.execute(httpPost);
+            
+            StatusLine statusLine = response.getStatusLine();
+            if(statusLine.getStatusCode() == HttpStatus.SC_OK){
+               Toast.makeText(contextActivity, "Received!", Toast.LENGTH_LONG).show();
+            }
 
             // 9. receive response as inputStream
             inputStream = httpResponse.getEntity().getContent();
