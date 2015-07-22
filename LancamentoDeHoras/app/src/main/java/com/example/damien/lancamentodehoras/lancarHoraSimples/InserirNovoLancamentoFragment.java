@@ -15,10 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.damien.lancamentodehoras.R;
-
-import com.example.damien.lancamentodehoras.database.OpenHelperLancamento;
 import com.example.damien.lancamentodehoras.model.Lancamentos;
-
 import com.example.damien.lancamentodehoras.model.LancamentosDAO;
 import com.example.damien.lancamentodehoras.ws.LancarHoraWS;
 
@@ -45,7 +42,6 @@ public class InserirNovoLancamentoFragment extends Fragment {
     private AlertDialog alerta;
     String horasRegistradas;
     boolean flagStatusContadorRodando = false;
-    OpenHelperLancamento db;
 
     String usuario = "DEU CERTO!";
     String horas;
@@ -85,18 +81,21 @@ public class InserirNovoLancamentoFragment extends Fragment {
             public void onClick(View view) {
                 if (flagStatusContadorRodando == false && horaFinal.getText() != "" && horaFinal.getText() != "") {
 
+                    ws.lancarHora();
                     //EditText campoUsuario = (EditText) getActivity().findViewById(R.id.statusContador);
-                    String campoUsuario = "Funcionou!"; //MOCK
-                    //TODO Pegar Usuário passado da tela de login por intent
+//                    String campoUsuario = "Funcionou!"; //MOCK
+//                    //TODO Pegar Usuário passado da tela de login por intent
+//
+//                    Lancamentos lancamentos = new Lancamentos(campoUsuario, horasRegistradas);
+//                    LancamentosDAO lancamentosDAO = new LancamentosDAO(getActivity());
+//                    lancamentosDAO.inserir(lancamentos);
+                    //Toast.makeText(getActivity(), "Registro inserido com sucesso!", Toast.LENGTH_SHORT).show();
+//                    flagStatusContadorRodando = false;
+//                    statusContador.setText("PARADO");
+//                    horaInicial.setText("");
+//                    horaFinal.setText("");
 
-                    Lancamentos lancamentos = new Lancamentos(campoUsuario, horasRegistradas);
-                    LancamentosDAO dao = new LancamentosDAO(getActivity());
-                    dao.inserir(lancamentos);
-                    Toast.makeText(getActivity(), "Registro inserido com sucesso!", Toast.LENGTH_SHORT).show();
-                    flagStatusContadorRodando = false;
-                    statusContador.setText("PARADO");
-                    horaInicial.setText("");
-                    horaFinal.setText("");
+
                 } else if (flagStatusContadorRodando == false && horasRegistradas == null) {
                     Toast.makeText(getActivity(), "Você precisa logar horas antes de enviar!", Toast.LENGTH_SHORT).show();
                 } else {

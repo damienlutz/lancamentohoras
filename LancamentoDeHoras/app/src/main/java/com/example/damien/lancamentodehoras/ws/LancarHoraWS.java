@@ -13,6 +13,7 @@ public class LancarHoraWS {
 
     public  LancarHoraWS ( Context contextActivity){
         this.contextActivity = contextActivity;
+        jsonTask = new DownloadJsonAsyncTask(contextActivity);
         
     }
     public void lancarHora(){

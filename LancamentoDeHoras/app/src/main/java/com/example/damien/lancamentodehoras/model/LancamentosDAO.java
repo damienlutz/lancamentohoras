@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.damien.lancamentodehoras.database.OpenHelperLancamento;
+import com.example.damien.lancamentodehoras.database.OpenHelperLancamentos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +15,14 @@ import java.util.List;
  */
 public class LancamentosDAO {
 
-    OpenHelperLancamento bdOpenHelper;
+    OpenHelperLancamentos bdOpenHelperLancamentos;
 
     public LancamentosDAO(Context contexto) {
-        bdOpenHelper = new OpenHelperLancamento(contexto);
+        bdOpenHelperLancamentos = new OpenHelperLancamentos(contexto);
     }
 
     public boolean inserir(Lancamentos lancamentos) {
-        SQLiteDatabase banco = bdOpenHelper.getWritableDatabase();
+        SQLiteDatabase banco = bdOpenHelperLancamentos.getWritableDatabase();
         ContentValues dados = new ContentValues();
         dados.put("usuario", lancamentos.getUsuarioLancamento());
         dados.put("horas", lancamentos.getHorasLancamentos());
@@ -32,9 +32,8 @@ public class LancamentosDAO {
     }
 
     public List<Lancamentos> getAll() {
-        List<Lancamentos> listaProdutos = new ArrayList<Lancamentos>();
-
-        SQLiteDatabase banco = bdOpenHelper.getReadableDatabase();
+        List<Lancamentos> listaLancamentos = new ArrayList<Lancamentos>();
+        SQLiteDatabase banco = bdOpenHelperLancamentos.getReadableDatabase();
         Cursor cursor = banco.query("lancamentos",
                 new String[]{"usuario", "horas"},
                 null, null, null, null, null);
@@ -43,9 +42,9 @@ public class LancamentosDAO {
             Lancamentos produto = new Lancamentos(
                     cursor.getString(cursor.getColumnIndex("usuario")),
                     cursor.getString(cursor.getColumnIndex("horas")));
-            listaProdutos.add(produto);
+            listaLancamentos.add(produto);
         }
-        return (listaProdutos);
+        return (listaLancamentos);
     }
 }
 

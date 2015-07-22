@@ -1,24 +1,43 @@
 package com.example.damien.lancamentodehoras;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.FragmentActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.damien.lancamentodehoras.database.OpenHelperUsuarios;
 import com.example.damien.lancamentodehoras.home.HomeActivity;
+import com.example.damien.lancamentodehoras.model.Usuarios;
+import com.example.damien.lancamentodehoras.model.UsuariosDAO;
 
 
-public class LancamentoDeHorasActivity extends FragmentActivity {
+public class LoginActivity extends FragmentActivity {
 
-    private static final String TAG = "LancamentoDeHorasActivity";
+    private static final String TAG = "LoginActivity";
 
     public void login() {
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
+        String usuarioUsuario = String.valueOf(((EditText) findViewById(R.id.username)).getText());
+        String senhaUsuario = String.valueOf(((EditText) findViewById(R.id.password)).getText());
+        UsuariosDAO usuariosDAO = new UsuariosDAO(getBaseContext());
+
+        if (usuarioUsuario.length() == 0 || senhaUsuario.length() == 0) {
+            Toast.makeText(this, "Preencha nome de usuário e senha para acessar!", Toast.LENGTH_SHORT).show();
+        } else {
+            usuariosDAO.validaUsuario(usuarioUsuario, senhaUsuario);
+
+            if (usuariosDAO.usuarioValidado) {
+                Intent intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Usuário/senha incorreto(a)!", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override
@@ -26,7 +45,7 @@ public class LancamentoDeHorasActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lancamento_de_horas);
 
-        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+        Button btnLogin = (Button) findViewById(R.id.btLogin);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
