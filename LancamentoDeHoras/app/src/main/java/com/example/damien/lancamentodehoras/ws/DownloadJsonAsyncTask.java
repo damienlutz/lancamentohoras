@@ -108,6 +108,8 @@ public class DownloadJsonAsyncTask extends AsyncTask<String, Void, String> {
             Log.d(TAG, String.valueOf(statusLine.getStatusCode()));
             if (statusLine.getStatusCode() == HttpStatus.SC_CREATED) {
                 responseOK = true;
+            } else {
+                Log.e(TAG, "Status de Erro: " + String.valueOf(statusLine.getStatusCode()));
             }
 
             // 9. receive response as inputStream
@@ -132,7 +134,7 @@ public class DownloadJsonAsyncTask extends AsyncTask<String, Void, String> {
         super.onPostExecute(result);
         Log.d(TAG, result);
         if (responseOK) {
-            Toast.makeText(contextActivity, "Registro inserido com Sucesso!", Toast.LENGTH_LONG).show();
+            Toast.makeText(contextActivity, "Registro inserido com sucesso!", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(contextActivity, "Erro ao inserir registro!", Toast.LENGTH_LONG).show();
         }

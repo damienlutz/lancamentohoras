@@ -102,9 +102,7 @@ public class NavigationDrawerFragment extends Fragment {
                 android.R.id.text1,
                 new String[]{
                         getString(R.string.menu_lancar_hora),
-                        "Consultar Lançamentos",
-                        getString(R.string.menu_projeto)
-
+                        "Consultar Lançamentos"
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;

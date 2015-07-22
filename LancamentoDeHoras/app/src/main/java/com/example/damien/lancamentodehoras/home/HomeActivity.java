@@ -25,9 +25,8 @@ public class HomeActivity extends FragmentActivity
 
     private static final int INDEX_LANCAR_HORA = 0;
     private static final int INDEX_CONSULTAR_LANCAMENTOS = 1;
-    private static final int INDEX_PROJETO = 2;
 
-        /**
+    /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
@@ -52,7 +51,7 @@ public class HomeActivity extends FragmentActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
-    private static final String TAG = "LancamentoDeHorasActivity";
+    private static final String TAG = "LoginActivity";
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
@@ -66,10 +65,6 @@ public class HomeActivity extends FragmentActivity
             case INDEX_CONSULTAR_LANCAMENTOS:
                 selectedFragment = new ConsultarLancamentosFragment();
                 mTitle = getString(R.string.menu_consultar_lancamentos);
-                break;
-            case INDEX_PROJETO:
-                selectedFragment = PlaceholderFragment.newInstance(position + 1);
-                mTitle = getString(R.string.menu_projeto);
                 break;
             default:
                 selectedFragment = PlaceholderFragment.newInstance(position + 1);
@@ -89,9 +84,6 @@ public class HomeActivity extends FragmentActivity
                 break;
             case 2:
                 mTitle = getString(R.string.menu_consultar_lancamentos);
-                break;
-            case 3:
-                mTitle = getString(R.string.menu_projeto);
                 break;
         }
     }
