@@ -104,7 +104,7 @@ public class DownloadJsonAsyncTask extends AsyncTask<String, Void, String> {
             
             StatusLine statusLine = response.getStatusLine();
             if(statusLine.getStatusCode() == HttpStatus.SC_OK){
-               Toast.makeText(contextActivity, "Received!", Toast.LENGTH_LONG).show();
+               Toast.makeText(contextActivity, "Received 201!", Toast.LENGTH_LONG).show();
             }
 
             // 9. receive response as inputStream
