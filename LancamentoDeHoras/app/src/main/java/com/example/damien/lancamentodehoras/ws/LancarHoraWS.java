@@ -17,6 +17,6 @@ public class LancarHoraWS {
         // jsonTask = new DownloadJsonAsyncTask(contextActivity);
     }
     public void lancarHora(){
-        jsonTask.execute("https://api.twitter.com/1/trends/23424768.json");
+        jsonTask.execute(http://private-7a4a1-ilegratimesheet.apiary-mock.com/service/activity);
     }
 }
