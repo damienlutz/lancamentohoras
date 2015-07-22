@@ -12,7 +12,9 @@ import com.example.damien.lancamentodehoras.home.HomeActivity;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.HttpVersion;
+import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -47,6 +49,7 @@ import java.util.List;
 public class DownloadJsonAsyncTask extends AsyncTask<String, Void, String> {
     private static final String TAG = "WS";
     ProgressDialog dialog;
+    private boolean responseOK = false;
 
     Context contextActivity;
 
@@ -57,7 +60,6 @@ public class DownloadJsonAsyncTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        dialog = ProgressDialog.show(contextActivity, "Aguarde", "Baixando JSON, Por Favor Aguarde...");
     }
 
     @Override
@@ -101,10 +103,11 @@ public class DownloadJsonAsyncTask extends AsyncTask<String, Void, String> {
 
             // 8. Execute POST request to the given URL
             HttpResponse httpResponse = httpclient.execute(httpPost);
-            
-            StatusLine statusLine = response.getStatusLine();
-            if(statusLine.getStatusCode() == HttpStatus.SC_OK){
-               Toast.makeText(contextActivity, "Received 201!", Toast.LENGTH_LONG).show();
+
+            StatusLine statusLine = httpResponse.getStatusLine();
+            Log.d(TAG, String.valueOf(statusLine.getStatusCode()));
+            if (statusLine.getStatusCode() == HttpStatus.SC_CREATED) {
+                responseOK = true;
             }
 
             // 9. receive response as inputStream
@@ -127,40 +130,42 @@ public class DownloadJsonAsyncTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        Toast.makeText(contextActivity, "Received!", Toast.LENGTH_LONG).show();
         Log.d(TAG, result);
+        if (responseOK) {
+            Toast.makeText(contextActivity, "Received 201!", Toast.LENGTH_LONG).show();
+        }
     }
-    
+
     public static HttpClient getNewHttpClient() {
 
-     HttpParams params = new BasicHttpParams();
-     HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-     HttpProtocolParams.setContentCharset(params, HTTP.DEFAULT_CONTENT_CHARSET);
-     HttpProtocolParams.setUseExpectContinue(params, true);
+        HttpParams params = new BasicHttpParams();
+        HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+        HttpProtocolParams.setContentCharset(params, HTTP.DEFAULT_CONTENT_CHARSET);
+        HttpProtocolParams.setUseExpectContinue(params, true);
 
-     SchemeRegistry schReg = new SchemeRegistry();
-     schReg.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-     schReg.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
-     ClientConnectionManager conMgr = new ThreadSafeClientConnManager(params, schReg);
+        SchemeRegistry schReg = new SchemeRegistry();
+        schReg.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+        schReg.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+        ClientConnectionManager conMgr = new ThreadSafeClientConnManager(params, schReg);
 
-     DefaultHttpClient http = new DefaultHttpClient(conMgr, params);
+        DefaultHttpClient http = new DefaultHttpClient(conMgr, params);
      /*
      UsernamePasswordCredentials credentials = new UsernamePasswordCredentials("name", "pass");
      AuthScope authScope = new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT);
      http.getCredentialsProvider().setCredentials(authScope, credentials);*/
 
-     return http;
+        return http;
     }
-    
-private static String convertInputStreamToString(InputStream inputStream) throws IOException{
-    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
-    String line = "";
-    String result = "";
-    while((line = bufferedReader.readLine()) != null)
-        result += line;
 
-    inputStream.close();
-    return result;
+    private static String convertInputStreamToString(InputStream inputStream) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        String line = "";
+        String result = "";
+        while ((line = bufferedReader.readLine()) != null)
+            result += line;
 
-}
+        inputStream.close();
+        return result;
+
+    }
 }
