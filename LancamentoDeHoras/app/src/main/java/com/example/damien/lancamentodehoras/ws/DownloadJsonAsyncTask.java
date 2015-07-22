@@ -106,4 +106,25 @@ public class DownloadJsonAsyncTask extends AsyncTask<String, Void, String> {
         Toast.makeText(getBaseContext(), "Received!", Toast.LENGTH_LONG).show();
         Log.d(TAG,result);
     }
+    
+    public static HttpClient getNewHttpClient() {
+
+     HttpParams params = new BasicHttpParams();
+     HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+     HttpProtocolParams.setContentCharset(params, HTTP.DEFAULT_CONTENT_CHARSET);
+     HttpProtocolParams.setUseExpectContinue(params, true);
+
+     SchemeRegistry schReg = new SchemeRegistry();
+     schReg.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+     schReg.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+     ClientConnectionManager conMgr = new ThreadSafeClientConnManager(params, schReg);
+
+     DefaultHttpClient http = new DefaultHttpClient(conMgr, params);
+     /*
+     UsernamePasswordCredentials credentials = new UsernamePasswordCredentials("name", "pass");
+     AuthScope authScope = new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT);
+     http.getCredentialsProvider().setCredentials(authScope, credentials);*/
+
+     return http;
+    }
 }
