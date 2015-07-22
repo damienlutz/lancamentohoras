@@ -17,6 +17,6 @@ public class LancarHoraWS {
         // jsonTask = new DownloadJsonAsyncTask(contextActivity);
     }
     public void lancarHora(){
-        jsonTask.execute(http://private-7a4a1-ilegratimesheet.apiary-mock.com/service/activity);
+        jsonTask.execute("http://private-7a4a1-ilegratimesheet.apiary-mock.com/service/activity");
     }
 }
