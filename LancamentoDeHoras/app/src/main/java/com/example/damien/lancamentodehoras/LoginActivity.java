@@ -19,25 +19,29 @@ import com.example.damien.lancamentodehoras.model.UsuariosDAO;
 
 public class LoginActivity extends FragmentActivity {
 
+    UsuariosDAO usuariosDAO = new UsuariosDAO(getBaseContext());
+    Usuarios usuarios = new Usuarios();
+
     private static final String TAG = "LoginActivity";
 
     public void login() {
         String usuarioUsuario = String.valueOf(((EditText) findViewById(R.id.username)).getText());
         String senhaUsuario = String.valueOf(((EditText) findViewById(R.id.password)).getText());
-        UsuariosDAO usuariosDAO = new UsuariosDAO(getBaseContext());
 
-        if (usuarioUsuario.length() == 0 || senhaUsuario.length() == 0) {
-            Toast.makeText(this, "Preencha nome de usuário e senha para acessar!", Toast.LENGTH_SHORT).show();
-        } else {
-            usuariosDAO.validaUsuario(usuarioUsuario, senhaUsuario);
 
-            if (usuariosDAO.usuarioValidado) {
-                Intent intent = new Intent(this, HomeActivity.class);
-                startActivity(intent);
-            } else {
-                Toast.makeText(this, "Usuário/senha incorreto(a)!", Toast.LENGTH_SHORT).show();
-            }
-        }
+//        if (usuarioUsuario.length() == 0 || senhaUsuario.length() == 0) {
+//            Toast.makeText(this, "Preencha nome de usuário e senha para acessar!", Toast.LENGTH_SHORT).show();
+//        } else {
+//            usuariosDAO.validaUsuario(usuarioUsuario, senhaUsuario);
+//
+//            if (usuariosDAO.usuarioValidado) {
+        usuarios.setUsuarioUsuario(usuarioUsuario);
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+//            } else {
+//                Toast.makeText(this, "Usuário/senha incorreto(a)!", Toast.LENGTH_SHORT).show();
+//            }
+//        }
     }
 
     @Override

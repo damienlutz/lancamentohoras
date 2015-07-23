@@ -9,7 +9,6 @@ public class OpenHelperLancamentos extends SQLiteOpenHelper {
     private static String nome = "lancamentodehoras.db";
     private static String create_lancamentos = "CREATE TABLE lancamentos(_id INTEGER PRIMARY KEY AUTOINCREMENT, usuario VARCHAR(30), horas REAL);";
 
-
     public OpenHelperLancamentos(Context contexto) {
         super(contexto, nome, null, VERSAO);
     }

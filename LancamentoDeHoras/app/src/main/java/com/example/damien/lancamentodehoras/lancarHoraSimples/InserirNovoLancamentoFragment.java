@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.example.damien.lancamentodehoras.R;
 import com.example.damien.lancamentodehoras.model.Lancamentos;
 import com.example.damien.lancamentodehoras.model.LancamentosDAO;
+import com.example.damien.lancamentodehoras.model.Usuarios;
+import com.example.damien.lancamentodehoras.model.UsuariosDAO;
 import com.example.damien.lancamentodehoras.ws.LancarHoraWS;
 
 import java.sql.Date;
@@ -31,9 +33,7 @@ public class InserirNovoLancamentoFragment extends Fragment {
     //private LancarHoraWS lancarHoraWS = new LancarHoraWS();
 
     private LancarHoraWS ws;
-
-    public InserirNovoLancamentoFragment() {
-    }
+    public Usuarios usuarios;
 
     private TextView statusContador;
     private TextView horaInicial = null;
@@ -43,11 +43,13 @@ public class InserirNovoLancamentoFragment extends Fragment {
     String horasRegistradas;
     boolean flagStatusContadorRodando = false;
 
-    String usuario = "DEU CERTO!";
+    //String usuario = "DEU CERTO!";
     String horas;
     EditText projeto;
     String email;
 
+    public InserirNovoLancamentoFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -81,20 +83,21 @@ public class InserirNovoLancamentoFragment extends Fragment {
             public void onClick(View view) {
                 if (flagStatusContadorRodando == false && horaFinal.getText() != "" && horaFinal.getText() != "") {
 
-                    ws.lancarHora();
-                    //EditText campoUsuario = (EditText) getActivity().findViewById(R.id.statusContador);
-//                    String campoUsuario = "Funcionou!"; //MOCK
-//                    //TODO Pegar Usuário passado da tela de login por intent
-//
-//                    Lancamentos lancamentos = new Lancamentos(campoUsuario, horasRegistradas);
-//                    LancamentosDAO lancamentosDAO = new LancamentosDAO(getActivity());
-//                    lancamentosDAO.inserir(lancamentos);
-                    //Toast.makeText(getActivity(), "Registro inserido com sucesso!", Toast.LENGTH_SHORT).show();
-//                    flagStatusContadorRodando = false;
-//                    statusContador.setText("PARADO");
-//                    horaInicial.setText("");
-//                    horaFinal.setText("");
+//                    ws.lancarHora();nel
 
+//                    EditText campoUsuario = (EditText) getActivity().findViewById(R.id.statusContador);
+
+                    String campoUsuario = usuarios.getUsuarioUsuario();
+                    Lancamentos lancamentos = new Lancamentos(campoUsuario, horasRegistradas);
+
+                    LancamentosDAO lancamentosDAO = new LancamentosDAO(getActivity());
+                    lancamentosDAO.inserir(lancamentos);
+                    Toast.makeText(getActivity(), "Registro inserido com sucesso!", Toast.LENGTH_SHORT).show();
+
+                    flagStatusContadorRodando = false;
+                    statusContador.setText("PARADO");
+                    horaInicial.setText("");
+                    horaFinal.setText("");
 
                 } else if (flagStatusContadorRodando == false && horasRegistradas == null) {
                     Toast.makeText(getActivity(), "Você precisa logar horas antes de enviar!", Toast.LENGTH_SHORT).show();

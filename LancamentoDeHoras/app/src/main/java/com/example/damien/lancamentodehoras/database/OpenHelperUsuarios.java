@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class OpenHelperUsuarios extends SQLiteOpenHelper {
-    private static int VERSAO = 3;
+    private static int VERSAO = 4;
     private static String nome = "lancamentodehoras.db";
     private static String CREATE_USUARIOS = "CREATE TABLE usuarios(_id INTEGER PRIMARY KEY AUTOINCREMENT, usuario TEXT UNIQUE, nome TEXT, email TEXT UNIQUE, senha TEXT);";
     public static String INSERT_USUARIOS = "INSERT INTO usuarios (usuario, nome, email, senha) VALUES ('francisco.nelsis', 'Francisco Nelsis', 'francisco.nelsis@ilegra.com', '12345');";

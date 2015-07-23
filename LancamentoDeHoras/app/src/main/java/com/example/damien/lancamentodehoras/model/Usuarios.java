@@ -17,6 +17,10 @@ public class Usuarios implements Serializable {
     public Usuarios(String usuarioUsuario, String senhaUsuario) {
     }
 
+    public Usuarios() {
+
+    }
+
     public String getSenhaUsuario() {
         return senhaUsuario;
     }
